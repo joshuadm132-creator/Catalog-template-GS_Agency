@@ -11,15 +11,16 @@ export default function Home() {
       title={business.name}
       description={business.description}
     />
-    <About
-        title={business.About.title}
-        description= {business.About.description}
-      />
+      <About
+           title={business.About.title}
+          contents={business.About.content}
+         />
     <Services
         services={business.services}
       />
 
     <Gallery
+        title="our work"
         items={[
           {
             title: "Engine Diagnostics",

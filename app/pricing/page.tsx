@@ -7,9 +7,9 @@ export default function Home() {
     <main>
 
       <Pricing
-        tiers={business.teir}
+        tiers={business.Pricing.teir}
         
-        comparisonFeatures={business.table}
+        comparisonFeatures={business.Pricing.table}
       />
     </main>
   );

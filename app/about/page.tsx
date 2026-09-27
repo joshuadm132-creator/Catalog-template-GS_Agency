@@ -6,7 +6,7 @@ export default function AboutPage() {
     <main>
       <About
         title={business.About.title}
-        description= {business.About.description}
+       contents={business.About.content}
       />
     </main>
   );

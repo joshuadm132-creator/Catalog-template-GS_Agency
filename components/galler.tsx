@@ -1,3 +1,5 @@
+
+
 type GalleryItem = {
   title: string;
   src: string;
@@ -5,15 +7,16 @@ type GalleryItem = {
 };
 
 type GalleryProps = {
+  title:string;
   items: GalleryItem[];
 };
 
-export default function Gallery({ items }: GalleryProps) {
+export default function Gallery({ title, items }: GalleryProps) {
   return (
     <section className="py-20 px-6 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-gray-900">
-          Our Work
+          {title}
         </h2>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">

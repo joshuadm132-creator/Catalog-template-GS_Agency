@@ -1,28 +1,61 @@
+"use client";
+
+
+import { useState } from "react";
+import Link from "next/link";
 import { business } from "@/config/business";
-export default function Nav() {
-    return (
-    <nav className="md:flex flex-row items-center justify-between px-8 py-5 bg-gray-250 border-b">
-      
-      <div>
-        <h2 className="text-xl md:text-3xl font-bold ">
-          {business.logo}
-        </h2>
-      </div>
-      <div className="flex gap-6">
-        <a href="/" className="text-gray-600 hover:text-black">
-          Home
-        </a>
 
-        <a href="/about" className="text-gray-600 hover:text-black">
-          About
-        </a>
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  return (
+    <nav className="border-b bg-white">
+      <div className="max-w-7xl mx-auto px-6">
 
-        <a href="/contact" className="text-gray-600 hover:text-black">
-          Contact
-        </a>
-        <a href="/pricing" className="text-gray-600 hover:text-black">
-          Pricing
-        </a>
+        <div className="py-5 flex items-center justify-between">
+
+          <Link href="/" className="text-2xl font-bold">
+            {business.name}
+          </Link>
+
+          <div className="hidden md:flex gap-6">
+            {business.navigation.map((item) => (
+              <Link
+                key={item?.href}
+                href={item?.href ?? '#'}
+                className="text-gray-600 hover:text-black transition"
+              >
+                {item?.label}
+              </Link>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            className="md:hidden text-2xl p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+           {menuOpen ? "✕" : "☰"}
+          </button>
+
+        </div>
+
+        {menuOpen && (
+          <div className="md:hidden flex flex-col gap-4 pb-5">
+            {business.navigation.map((item) => (
+              <Link
+                key={item?.href}
+                href={item?.href ?? '#'}
+                onClick={() => setMenuOpen(false)}
+                className="text-gray-600 hover:text-black transition "
+              >
+                {item?.label}
+              </Link>
+            ))}
+          </div>
+        )}
+
       </div>
     </nav>
   );

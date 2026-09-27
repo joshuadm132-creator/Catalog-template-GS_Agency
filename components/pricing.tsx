@@ -24,8 +24,8 @@ type PricingProps = {
 };
 
 export default function Pricing({
-  title = "Pricing & Maintenance Plans",
-  subtitle = "Choose the right service package or monthly maintenance plan for your vehicle.",
+  title,
+  subtitle,
   tiers,
   comparisonFeatures = [],
 }: PricingProps) {
@@ -62,7 +62,7 @@ export default function Pricing({
               ? " text-white"
               : "text-gray-900"
               }`} >
-                {tier.name} editing</h3>
+                {tier.name}</h3>
               <p className={`mt-2 text-sm ${tier.popular ?"text-gray-100" : "text-gray-500"}`}>{tier.description}</p>
                     {/* Price */} 
                 <div className="mt-6 flex items-baseline"> 
