@@ -26,7 +26,7 @@ export default function About({ title, contents }: AboutProps) {
         </h2>
 
         {contents.map((contant) => (
-          <div key={contant.id} className="mt-8">
+          <div key={contant.id} className="mt-8" id={contant.id}>
             {contant.subtitle && (
               <h3  className="mt-4 text-lg text-gray-800 uppercase">
                 {contant.subtitle}

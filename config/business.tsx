@@ -45,7 +45,7 @@ export const business = {
             description: `Increase Your Visibility throughput the web`,
             content:[
               {
-                id:"Developing Zimbabwe into a sustained future.",
+                id:"SEO-section.",
               subtitle: "Developing Zimbabwe into a sustained future.",
               paragraphs: [
                 "One more thing worth deciding before you launch: how you'll actually collect the monthly subscription. Given the local context, expect most Starter/Business tier clients to prefer EcoCash or bank transfer over a card-based auto-billing tool — so plan for manual monthly invoicing early on rather than assuming a subscription platform will handle it for you automatically.",
@@ -68,7 +68,7 @@ export const business = {
             description: "We build modern websites for businesses.",
             content:[
               {
-                id: "Building a stronger digital presence",
+                id: "digital-presence",
               subtitle: "Building a stronger digital presence",
               paragraphs: [
                 "Our web development service helps businesses establish...",
@@ -263,6 +263,37 @@ export const business = {
             alt: "Suspension tuning",
           },
         ]},
+
+
+ footerData : {
+  companyName: "DevStudio",
+  description: "Crafting fast, modern web applications for businesses worldwide.",
+  sections: [
+    {
+      title: "Services",
+      links: [
+        { label: "Web Development", href: "/services/web-dev" },
+        { label: "SEO Optimization", href: "/services/seo" },
+        { label: "Maintenance", href: "/services/maintenance" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About Us", href: "/about" },
+        { label: "Pricing", href: "/pricing" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      title: "Connect",
+      links: [
+        { label: "GitHub", href: "https://github.com", isExternal: true },
+        { label: "LinkedIn", href: "https://linkedin.com", isExternal: true },
+      ],
+    },
+  ],
+},
 
 
 

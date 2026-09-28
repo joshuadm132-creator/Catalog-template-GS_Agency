@@ -14,9 +14,9 @@ export function Hero({ title, description }: HeroProps) {
         {description}
       </p>
 
-      <button className="mt-8 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition">
-        Contact Us
-      </button>
+     <button className="mt-8 self-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition">
+  Contact Us
+</button>
     </section>
   );
 }
