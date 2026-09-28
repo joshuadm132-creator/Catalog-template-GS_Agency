@@ -1,10 +1,7 @@
-import Pricing from "@/components/pricing";
-import { title } from "process";
-
 export const business = {
   name: "Talos Industies",
   logo: "TALOS",
-  description: "Bring africa to the forfront of techology",
+  description: "Building the digital infrastructure for growing businesses",
 
   location: "Harare, Zimbabwe",
 
@@ -36,37 +33,19 @@ export const business = {
       label: "Pricing",
       href: "/pricing",
     },
+    {
+      label: "Services",
+      href: "/Services",
+    },
     ],
   services:[
           {
-            title: "Engine Repairs",
-            description: "Professional engine diagnostics and repairs.",
-          },
-          {
-            title: "Brake Services",
-            description: "Brake inspection, maintenance and repairs.",
-          },
-          {
-            title: "Oil Changes",
-            description: "Keep your engine running smoothly.",
-          },
-           {
-            title: "window Tint",
-            description: "Professional engine diagnostics and repairs.",
-          },
-          {
-            title: "sad ending",
-            description: "Opposit of the happy one I guess i donno",
-          },
-          {
-            title: "Happy ending",
-            description: "Keep your engine running smoothly.",
-          },
-        ],
-        About: {
-          title: "About Our Business",
-          content:[
+            id: "seo",
+            title: "SEO",
+            description: `Increase Your Visibility throughput the web`,
+            content:[
               {
+                id:"Developing Zimbabwe into a sustained future.",
               subtitle: "Developing Zimbabwe into a sustained future.",
               paragraphs: [
                 "One more thing worth deciding before you launch: how you'll actually collect the monthly subscription. Given the local context, expect most Starter/Business tier clients to prefer EcoCash or bank transfer over a card-based auto-billing tool — so plan for manual monthly invoicing early on rather than assuming a subscription platform will handle it for you automatically.",
@@ -79,8 +58,69 @@ export const business = {
                 "Reliable support",
                 "Affordable pricing",
                 ],  
+                
+              },
+            ],
+          },
+          {
+            id: "web-development",
+            title: "Web Development",
+            description: "We build modern websites for businesses.",
+            content:[
+              {
+                id: "Building a stronger digital presence",
+              subtitle: "Building a stronger digital presence",
+              paragraphs: [
+                "Our web development service helps businesses establish...",
+                "We focus on responsive design, usability and performance."
+              ],
+
+              features: [
+                "Responsive websites",
+                "Mobile-friendly design",
+                "SEO-friendly structure"
+              ],
+
+              button: {
+                text: "Contact Us",
+                href: "/contact"
+              },
+            },]
+          },
+
+          {
+            id:" oil-chane",
+            title: "Oil Changes",
+            description: "Keep your engine running smoothly.",
+          },
+           
+        ],
+        
+        About: {
+          title: "About Our Business",
+          content:[
+              {
+              id:"mission",
+              subtitle: "Developing Zimbabwe into a sustained future.",
+              paragraphs: [
+                "One more thing worth deciding before you launch: how you'll actually collect the monthly subscription. Given the local context, expect most Starter/Business tier clients to prefer EcoCash or bank transfer over a card-based auto-billing tool — so plan for manual monthly invoicing early on rather than assuming a subscription platform will handle it for you automatically.",
+                "Our goal is to deliver quality while building lasting relationships.",
+              ],
+
+              features: [
+                "Experienced team",
+                "Quality service",
+                "Reliable support",
+                "Affordable pricing",
+                ],  
+
+                button: {
+                  text: "Contact Us",
+                  href: "/contact"
+                }
             },
             {
+              id:"goal",
             subtitle: "Quality is our main goal",
             paragraphs: [
               "One more thing worth deciding before you launch: how you'll actually collect the monthly subscription. Given the local context, expect most Starter/Business tier clients to prefer EcoCash or bank transfer over a card-based auto-billing tool — so plan for manual monthly invoicing early on rather than assuming a subscription platform will handle it for you automatically.",

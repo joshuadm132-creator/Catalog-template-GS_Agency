@@ -1,12 +1,20 @@
-type contentProps = {
+import Image from "next/image";
+import Link from "next/link";
+type Content = {
+  id: string;
   subtitle?: string;
   paragraphs: string[];
   features?: string[];
+  image?: string;
+  button?: {
+    text: string;
+    href: string;
+  };
 };
 
 type AboutProps = {
   title: string;
-  contents: contentProps[];
+  contents: Content[];
 };
 
 export default function About({ title, contents }: AboutProps) {
@@ -17,8 +25,8 @@ export default function About({ title, contents }: AboutProps) {
           {title}
         </h2>
 
-        {contents.map((contant, index) => (
-          <div key={index} className="mt-8">
+        {contents.map((contant) => (
+          <div key={contant.id} className="mt-8">
             {contant.subtitle && (
               <h3  className="mt-4 text-lg text-gray-800 uppercase">
                 {contant.subtitle}
@@ -34,6 +42,14 @@ export default function About({ title, contents }: AboutProps) {
               </p>
             ))}
 
+            {contant.image && (
+              <Image
+                src={contant.image}
+                alt={contant.subtitle || "About us"}
+                className="mt-8 w-full rounded-xl object-cover"
+              />
+            )}
+
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {contant.features && contant.features.map((feature, fIndex) => (
                 <div
@@ -44,6 +60,16 @@ export default function About({ title, contents }: AboutProps) {
                 </div>
               ))}
             </div>
+
+              {contant.button && (
+                <Link
+                  href={contant.button.href}
+                  className="inline-block mt-8 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+                >
+                  {contant.button.text}
+                </Link>
+              )}
+
           </div>
         ))}
       </div>
