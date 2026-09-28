@@ -228,41 +228,17 @@ export const business = {
 
       ],
     },
-        Gallery:{
-
-          title:"title work",
-          items:[
-          {
-            title: "SEO",
-            src: "https://pixabay.com/images/download/geralt-search-engine-optimization-1521118_1920.jpg",
-            alt: "SEO image",
-          },
-          {
-            title: "Brake Replacement",
-            src: "https://placehold.co/600x800?text=Brake+Replacement",
-            alt: "Brake replacement",
-          },
-          {
-            title: "Suspension Tuning",
-            src: "https://placehold.co/600x800?text=Suspension+Tuning",
-            alt: "Suspension tuning",
-          },
-          {
-            title: "No ending",
-            src: "https://placehold.co/600x800?text=No+Ending",
-            alt: "Engine diagnostics",
-          },
-          {
-            title: "Sad ending",
-            src: "https://placehold.co/600x800?text=Sad+Ending",
-            alt: "Brake replacement",
-          },
-          {
-            title: "Happy Ending",
-            src: "https://placehold.co/600x800?text=Happy+Ending",
-            alt: "Suspension tuning",
-          },
-        ]},
+        Gallery: {
+          title: "Our Work",
+          items: [
+            { title: "SEO Campaign", src: "https://placehold.co/600x800?text=SEO", alt: "SEO work" },
+            { title: "Brake Replacement", src: "https://placehold.co/600x800?text=Brake+Replacement", alt: "Brake replacement" },
+            { title: "Suspension Tuning", src: "https://placehold.co/600x800?text=Suspension+Tuning", alt: "Suspension tuning" },
+            { title: "Engine Diagnostics", src: "https://placehold.co/600x800?text=Engine+Diagnostics", alt: "Engine diagnostics" },
+            { title: "Paint & Body", src: "https://placehold.co/600x800?text=Paint+%26+Body", alt: "Paint and body work" },
+            { title: "Happy Customers", src: "https://placehold.co/600x800?text=Happy+Customers", alt: "Happy customers" },
+          ],
+        },
 
 
         footerData : {

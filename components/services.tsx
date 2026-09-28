@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 type ServiceContent = {
   id: string;
@@ -49,6 +50,7 @@ export default function Services({
           <div className="mt-10 grid gap-8 md:grid-cols-3">
 
             {services.map((service) => (
+              <Reveal key={service.id} delay={120}>
               <div
                 key={service.id}
                 className="p-6 border rounded-xl bg-white shadow-sm hover:shadow-md transition"
@@ -65,6 +67,7 @@ export default function Services({
                 </p>
 
               </div>
+              </Reveal>
             ))}
 
           </div>
@@ -79,6 +82,7 @@ export default function Services({
           <div className="mt-16 space-y-20">
 
             {services.map((service) => (
+              <Reveal key={service.id} delay={120}>
               <article
                 key={service.id}
                 id={service.id} /* <-- ADD THIS: Allows linking to /Services#web-development */
@@ -168,6 +172,7 @@ export default function Services({
                 )}
 
               </article>
+              </Reveal>
             ))}
 
           </div>

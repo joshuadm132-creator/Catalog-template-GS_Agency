@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
 
         {business.footerData.sections.map((item) => (
-          <div> 
+          <div key={item.title}> 
             <h2 className="text-xl font-bold">
               {item.title}
             </h2>

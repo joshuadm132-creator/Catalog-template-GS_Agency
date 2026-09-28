@@ -1,4 +1,7 @@
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
 
+import CustomSection from "@/components/section";
 
 type GalleryItem = {
   title: string;
@@ -7,36 +10,38 @@ type GalleryItem = {
 };
 
 type GalleryProps = {
-  title:string;
+  title: string;
   items: GalleryItem[];
 };
 
 export default function Gallery({ title, items }: GalleryProps) {
   return (
-    <section className="py-20 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-900">
-          {title}
-        </h2>
+    <CustomSection background="gray">
+      <h2 className="text-3xl font-bold text-center text-gray-900 uppercase">
+        {title}
+      </h2>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {items.map((item) => (
-            <div
-              key={item.title}
-              className="overflow-hidden rounded-xl border bg-white shadow-sm hover:shadow-md transition"
-            >
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="w-full h-88 object-cover"
-              />
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {items.map((item, index) => (
+          <Reveal key={item.title} delay={index * 100}>
+            <div className="group relative overflow-hidden rounded-xl border bg-white shadow-sm hover:shadow-xl transition-shadow duration-300">
+              <div className="relative h-72 w-full overflow-hidden">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
               <div className="p-4">
                 <h3 className="font-semibold text-gray-800">{item.title}</h3>
               </div>
             </div>
-          ))}
-        </div>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </CustomSection>
   );
 }

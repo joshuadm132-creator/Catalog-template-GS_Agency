@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+import CustomSection from "@/components/section";
 export type ServiceTier = {
   id: string; // unique key, e.g. "basic", "pro", "advanced"
   name: string;
@@ -30,8 +32,7 @@ export default function Pricing({
   comparisonFeatures = [],
 }: PricingProps) {
   return (
-    <section className="py-20 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
+     <CustomSection background="gray">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
@@ -92,13 +93,16 @@ export default function Pricing({
 
         {/* 2. Responsive Comparison Table */}
         {comparisonFeatures.length > 0 && (
+          <Reveal>
           <div className="mt-20">
             <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
               Compare Features
             </h3>
-
+          
             {/* Horizontal scroll wrapper for mobile */}
+            <Reveal delay={500}>
             <div className="overflow-x-auto bg-white border border-gray-200 rounded-2xl shadow-sm">
+              
               <table className="w-full text-left border-collapse min-w-[600px]">
                 <thead>
                   <tr className="border-b border-gray-200 bg-gray-50/50">
@@ -117,6 +121,7 @@ export default function Pricing({
                 </thead>
                 <tbody className="divide-y divide-gray-200 text-sm text-gray-700">
                   {comparisonFeatures.map((row, index) => (
+                  
                     <tr
                       key={index}
                       className="hover:bg-gray-50/50 transition-colors"
@@ -143,13 +148,17 @@ export default function Pricing({
                         );
                       })}
                     </tr>
+                  
                   ))}
                 </tbody>
-              </table>
+               
+              </table> 
+            
             </div>
-          </div>
+          </Reveal>
+        </div>
+        </Reveal>
         )}
-      </div>
-    </section>
+    </CustomSection>
   );
 }
