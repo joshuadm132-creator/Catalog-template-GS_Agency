@@ -1,11 +1,14 @@
 
 import { business } from "@/config/business";
+import Reveal from "@/components/Reveal"
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
+      
       <div className="max-w-7xl mx-auto px-6 py-12">
+        <Reveal delay={800}>
         <div className="flex flex-col md:flex-row justify-between gap-8">
           
           <div>
@@ -55,7 +58,9 @@ export default function Footer() {
         <div className="mt-10 pt-6 border-t border-gray-700 text-sm text-gray-400">
           © {new Date().getFullYear()} {business.name}. All rights reserved.
         </div>
+        </Reveal>
       </div>
+      
     </footer>
   );
 }
