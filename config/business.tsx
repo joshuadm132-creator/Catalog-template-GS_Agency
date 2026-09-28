@@ -233,9 +233,9 @@ export const business = {
           title:"title work",
           items:[
           {
-            title: "Engine Diagnostics",
-            src: "https://placehold.co/600x800?text=Engine+Diagnostics",
-            alt: "Engine diagnostics",
+            title: "SEO",
+            src: "https://pixabay.com/images/download/geralt-search-engine-optimization-1521118_1920.jpg",
+            alt: "SEO image",
           },
           {
             title: "Brake Replacement",
