@@ -71,8 +71,8 @@ export const business = {
                 id: "digital-presence",
               subtitle: "Building a stronger digital presence",
               paragraphs: [
-                "Our web development service helps businesses establish...",
-                "We focus on responsive design, usability and performance."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "Lorem ipsum dolor sit amet,  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               ],
 
               features: [
@@ -124,7 +124,7 @@ export const business = {
             subtitle: "Quality is our main goal",
             paragraphs: [
               "One more thing worth deciding before you launch: how you'll actually collect the monthly subscription. Given the local context, expect most Starter/Business tier clients to prefer EcoCash or bank transfer over a card-based auto-billing tool — so plan for manual monthly invoicing early on rather than assuming a subscription platform will handle it for you automatically.",
-              "Our goal is to deliver quality while building lasting relationships.",
+             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .",
             ],
 
           },
@@ -157,7 +157,7 @@ export const business = {
           "name": "Business",
           "price": "$150–$250",
           "monthlyFee": "$10–$30/mo",
-          "popular": true,
+          "popular": false,
           "description": "Complete website setup with active SEO and regular content updates.",
           "features": [
             "Up to 5 Pages (Home, About, Services, Gallery, Contact)",
@@ -172,7 +172,7 @@ export const business = {
           "name": "Business Pro",
           "price": "$350–$600",
           "monthlyFee": "$30–$80/mo",
-          "popular": true,
+          "popular": false,
           "description": "Custom high-capacity build with full SEO optimization and priority edits.",
           "features": [
             "Up to 9 Pages + Custom Sections",
@@ -265,36 +265,47 @@ export const business = {
         ]},
 
 
- footerData : {
-  companyName: "DevStudio",
-  description: "Crafting fast, modern web applications for businesses worldwide.",
-  sections: [
-    {
-      title: "Services",
-      links: [
-        { label: "Web Development", href: "/services/web-dev" },
-        { label: "SEO Optimization", href: "/services/seo" },
-        { label: "Maintenance", href: "/services/maintenance" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "About Us", href: "/about" },
-        { label: "Pricing", href: "/pricing" },
-        { label: "Contact", href: "/contact" },
-      ],
-    },
-    {
-      title: "Connect",
-      links: [
-        { label: "GitHub", href: "https://github.com", isExternal: true },
-        { label: "LinkedIn", href: "https://linkedin.com", isExternal: true },
-      ],
-    },
-  ],
-},
+        footerData : {
+          companyName: "DevStudio",
+          description: "Crafting fast, modern web applications for businesses worldwide.",
+          sections: [
+            {
+              title: "Services",
+              links: [
+                { label: "Web Development", href: "/services/web-dev" },
+                { label: "SEO Optimization", href: "/services/seo" },
+                { label: "Maintenance", href: "/services/maintenance" },
+              ],
+            },
+            {
+              title: "Company",
+              links: [
+                { label: "About Us", href: "/about" },
+                { label: "Pricing", href: "/pricing" },
+                { label: "Contact", href: "/contact" },
+              ],
+            },
+            {
+              title: "Connect",
+              links: [
+                { label: "GitHub", href: "https://github.com", isExternal: true },
+                { label: "LinkedIn", href: "https://linkedin.com", isExternal: true },
+              ],
+            },
+          ],
+        },
 
+        Careers: {
+
+          Jop_openings:[{
+            title:"Client aquisition",
+            description:"aquire clients",
+            work_type:"Temp",
+            Payment:"comission"
+
+          }]
+
+        }
 
 
 

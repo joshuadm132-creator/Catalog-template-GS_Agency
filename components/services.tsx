@@ -55,7 +55,7 @@ export default function Services({
               >
 
                 {/* SERVICE TITLE */}
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-semibold text-gray-900 uppercase">
                   {service.title}
                 </h3>
 

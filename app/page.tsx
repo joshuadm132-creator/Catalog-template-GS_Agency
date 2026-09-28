@@ -19,27 +19,6 @@ export default function Home() {
         services={business.services}
       />
 
-    <Gallery
-        title="our work"
-        items={[
-          {
-            title: "Engine Diagnostics",
-            src: "https://placehold.co/600x800?text=Engine+Diagnostics",
-            alt: "Engine diagnostics",
-          },
-          {
-            title: "Brake Replacement",
-            src: "https://placehold.co/600x800?text=Brake+Replacement",
-            alt: "Brake replacement",
-          },
-          {
-            title: "Suspension Tuning",
-            src: "https://placehold.co/600x800?text=Suspension+Tuning",
-            alt: "Suspension tuning",
-          },
-        ]}
-      />
-
     </main>
 
 
