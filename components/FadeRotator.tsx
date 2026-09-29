@@ -3,15 +3,17 @@
 import { useEffect, useState, ReactNode } from "react";
 
 type FadeRotatorProps = {
-  items: ReactNode[];        // array of things to rotate through
-  interval?: number;         // ms between switches, default 3000
-  fadeDuration?: number;     // ms of fade transition, default 700
+  items: ReactNode[];
+  interval?: number;
+  fadeDuration?: number;
+  minHeight?: number;
 };
 
 export default function FadeRotator({
   items,
   interval = 3500,
   fadeDuration = 500,
+  minHeight,
 }: FadeRotatorProps) {
   const [index, setIndex] = useState(0);
 
@@ -33,7 +35,7 @@ export default function FadeRotator({
     {items.map((item, i) => (
       <div
         key={i}
-        style={{ transitionDuration: `${fadeDuration}ms` }}
+        style={{ transitionDuration: `${fadeDuration}ms` ,minHeight: minHeight ? `${minHeight}px` : undefined}}
         className={`
           col-start-1 row-start-1
           transition-opacity ease-in-out
