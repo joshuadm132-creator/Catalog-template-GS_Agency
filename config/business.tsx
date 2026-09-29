@@ -45,7 +45,7 @@ export const business = {
             description: `Increase Your Visibility throughput the web`,
             content:[
               {
-                id:"SEO-section.",
+                id:"SEO-section",
               subtitle: "Developing Zimbabwe into a sustained future.",
               paragraphs: [
                 "One more thing worth deciding before you launch: how you'll actually collect the monthly subscription. Given the local context, expect most Starter/Business tier clients to prefer EcoCash or bank transfer over a card-based auto-billing tool — so plan for manual monthly invoicing early on rather than assuming a subscription platform will handle it for you automatically.",
@@ -89,9 +89,9 @@ export const business = {
           },
 
           {
-            id:" oil-chane",
-            title: "Oil Changes",
-            description: "Keep your engine running smoothly.",
+            id:" Maintanance",
+            title: "Website maintanance Changes",
+            description: "Keep your systems running smoothly.",
           },
            
         ],
@@ -248,9 +248,9 @@ export const business = {
             {
               title: "Services",
               links: [
-                { label: "Web Development", href: "/services/web-dev" },
-                { label: "SEO Optimization", href: "/services/seo" },
-                { label: "Maintenance", href: "/services/maintenance" },
+                { label: "Web Development", href: "/Services/#digital-presence" },
+                { label: "SEO Optimization", href: "/Services/#SEO-section" },
+                { label: "Maintenance", href: "/Services/#Maintanance" },
               ],
             },
             {
@@ -264,8 +264,8 @@ export const business = {
             {
               title: "Connect",
               links: [
-                { label: "GitHub", href: "https://github.com", isExternal: true },
-                { label: "LinkedIn", href: "https://linkedin.com", isExternal: true },
+                { label: "GitHub", href: "https://github.com"},
+                { label: "LinkedIn", href: "https://linkedin.com"},
               ],
             },
           ],

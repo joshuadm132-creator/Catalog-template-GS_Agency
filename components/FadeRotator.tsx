@@ -29,48 +29,46 @@ export default function FadeRotator({
   if (items.length === 0) return null;
 
   return (
-    <div className="relative">
-      {items.map((item, i) => (
-        <div
-          key={i}
-          style={{ transitionDuration: `${fadeDuration}ms` }}
-          className={`
-            transition-opacity ease-in-out
-            ${i === index ? "opacity-100 relative" : "opacity-0 absolute inset-0 pointer-events-none"}
-          `}
-        >
-          {item}
-        </div>
-      ))}
-    </div>
-  );
+  <div className="grid">
+    {items.map((item, i) => (
+      <div
+        key={i}
+        style={{ transitionDuration: `${fadeDuration}ms` }}
+        className={`
+          col-start-1 row-start-1
+          transition-opacity ease-in-out
+          ${i === index ? "opacity-100" : "opacity-0 pointer-events-none"}
+        `}
+      >
+        {item}
+      </div>
+    ))}
+  </div>
+);
 }
-
-
 
 type MarqueeProps = {
   children: ReactNode;
-  speed?: number;       // seconds for one full loop, default 30
+  duration?: number;
   direction?: "left" | "right";
 };
 
 export function Marquee({
   children,
-  speed = 30,
+  duration = 10,
   direction = "left",
 }: MarqueeProps) {
   return (
     <div className="relative overflow-hidden">
       <div
-        className="flex w-max animate-marquee"
+        className="w-max animate-marquee-fade"
         style={{
-          animationDuration: `${speed}s`,
-          animationDirection: direction === "right" ? "reverse" : "normal",
+          animationDuration: `${duration}s`,
+          animationDirection:
+            direction === "right" ? "reverse" : "normal",
         }}
       >
-        {/* Duplicate children so the loop looks seamless */}
-        <div className="flex shrink-0">{children}</div>
-        <div className="flex shrink-0" aria-hidden="true">{children}</div>
+        {children}
       </div>
     </div>
   );

@@ -13,13 +13,28 @@
   --breakpoint-md: 600px; /* Changes 'md' to 600px */
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+@keyframes marquee-fade {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 
-.animate-marquee {
-  animation-name: marquee;
+.animate-marquee-fade {
+  animation-name: marquee-fade;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }

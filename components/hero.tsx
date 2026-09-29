@@ -19,24 +19,23 @@ export function Hero({ title, description }: HeroProps) {
       <FadeRotator
         interval={3500}
         items={[
-          <p key="1" className="text-2xl font-semibold">Trusted by 20+ businesses</p>,
+          <p key="1" className="text-2xl font-semibold ">Trusted by 20+ businesses</p>,
           <p key="2" className="text-2xl font-semibold">Fast quality results</p>,
           <p key="3" className="text-2xl font-semibold">Built for growing companies</p>,
         ]}
 
       />
-       <p className="font-mono text-label uppercase text-brass-700 text-sm">
+       <p className="font-mono text-label uppercase text-brass-700 text-sm ">
        morden human sustainable · HARARE, ZIMBABWE
         </p>
 
-        <Marquee speed={25}>
-          <div className="flex gap-12 px-6">
-            <img src="/logos/company1.png" alt="Company One" className="h-12" />
-            <img src="/logos/company2.png" alt="Company Two" className="h-12" />
-            <img src="/logos/company3.png" alt="Company Three" className="h-12" />
-            {/* ... more logos */}
-          </div>
-        </Marquee>
+     <Marquee duration={20}>
+      <div className="flex gap-12">
+        <span className = "font-mono text-brass-700">Qulaity</span>
+        <span className = "font-mono text-brass-700">Experience</span>
+        <span className = "font-mono text-brass-700">Morden</span>
+      </div>
+    </Marquee>
 
      <button className="mt-8 self-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition">
   Contact Us
