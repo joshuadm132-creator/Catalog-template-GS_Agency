@@ -16,6 +16,14 @@ export default function ContactPage() {
       // Add the leading slash HERE:
       image: "Together.jpeg",
     },
+    {
+      id: "Love",
+      subtitle: "Okay so I need to put in more thought into this where we started stuff",
+      paragraphs: [
+        "I Love YOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU MWAAAAAAAAAAAAAAA"      ],
+      // Add the leading slash HERE:
+      image: "Together.jpeg",
+    },
   ]
 };    
         
@@ -34,6 +42,7 @@ export default function ContactPage() {
            </section>
             
            {/* 2. Your values/mission — content blocks */}
+           
            <AboutContent
              title={data.title}
              contents= {data.content}
