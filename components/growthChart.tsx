@@ -19,10 +19,9 @@ type GrowthChartProps = {
 
 // 16 years, roughly exponential growth
 const DEFAULT_DATA: DataPoint[] = [
-{ value: 0.3, label: "2004" },
-{ value: 1, label: "2005" },
-{ value: 3, label: "2006" },
-{ value: 5, label: "2007" },
+
+
+
 { value: 2, label: "2008" },
 { value: 7, label: "2009" },
   { value: 7, label: "2010" },
@@ -45,8 +44,8 @@ const DEFAULT_DATA: DataPoint[] = [
 
 export default function GrowthChart({
   data = DEFAULT_DATA,
-  duration = 2800,
-  width = 620,
+  duration = 3800,
+  width = 780,
   height = 420,
   lineColor = "#62a805",
   glowColor = "#07f950",

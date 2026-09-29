@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FadeRotator from "@/components/FadeRotator";
+import FadeRotator,{Marquee} from "@/components/FadeRotator";
 import GrowthChart from "@/components/growthChart";
 import { business } from "@/config/business";
 
@@ -76,6 +76,13 @@ export default function Hero({ title, description }: HeroProps) {
           <div className="relative">
             <p className="text-2xl font-semibold text-green-500 text-sm uppercase">Website Growht worldwide</p>
             <GrowthChart />
+            <Marquee duration={20}>
+              <div className="flex gap-12 font-mono text-brass-700 uppercase">
+                <span >We give you the same advantages</span>
+                <span >Join the digital age</span>
+                <span>One step at a time</span>
+              </div>
+            </Marquee>
           </div>
 
         </div>
