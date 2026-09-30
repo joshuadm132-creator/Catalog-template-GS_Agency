@@ -19,16 +19,16 @@ type TeamRotatorProps = {
 
 export default function TeamRotator({ title, contents }: TeamRotatorProps) {
   return (
-    <section className="py-24 px-6 bg-gray-50">
+    <section className="py-24 px-6 bg-surface">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 uppercase text-center">
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-text uppercase text-center">
           {title}
         </h2>
 
         <div className="mt-16">
           <FadeRotator
             interval={8000}
-            minHeight={520}
+            minHeight={420}
             items={contents.map((member) => (
               <div
                 key={member.id}
@@ -37,7 +37,7 @@ export default function TeamRotator({ title, contents }: TeamRotatorProps) {
               >
                 {/* Photo column */}
                 <div className="mx-auto md:mx-0">
-                  <div className="w-48 h-48 md:w-full md:h-64 rounded-2xl bg-gray-200 overflow-hidden">
+                  <div className="w-48 h-48 md:w-full md:h-64 rounded-2xl bg-border overflow-hidden">
                     {member.image ? (
                       <Image
                         src={member.image}
@@ -47,7 +47,7 @@ export default function TeamRotator({ title, contents }: TeamRotatorProps) {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-4xl font-bold">
+                      <div className="w-full h-full flex items-center justify-center text-text-muted text-4xl font-heading font-bold">
                         {member.subtitle?.charAt(0) || "?"}
                       </div>
                     )}
@@ -57,13 +57,13 @@ export default function TeamRotator({ title, contents }: TeamRotatorProps) {
                 {/* Bio column */}
                 <div>
                   {member.subtitle && (
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold text-text">
                       {member.subtitle}
                     </h3>
                   )}
 
                   {member.paragraphs.map((p, i) => (
-                    <p key={i} className="mt-4 text-gray-600 leading-relaxed">
+                    <p key={i} className="mt-4 text-text-muted leading-relaxed">
                       {p}
                     </p>
                   ))}
@@ -71,7 +71,7 @@ export default function TeamRotator({ title, contents }: TeamRotatorProps) {
                   {member.button && (
                     <Link
                       href={member.button.href}
-                      className="inline-block mt-6 text-sm font-semibold text-gray-900 underline underline-offset-4 hover:text-gray-600 transition"
+                      className="inline-block mt-6 text-sm font-semibold text-text underline underline-offset-4 hover:text-primary transition"
                     >
                       {member.button.text} →
                     </Link>

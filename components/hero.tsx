@@ -3,15 +3,19 @@ import FadeRotator from "@/components/FadeRotator";
 import GrowthChart from "@/components/growthChart";
 import { business } from "@/config/business";
 
-type HeroProps = {
+/* ============================================================
+   Home variant — big two-column hero with chart and rotator
+   ============================================================ */
+
+type HomeHeroProps = {
+  variant: "home";
   title: string;
   description: string;
 };
 
-export default function Hero({ title, description }: HeroProps) {
+function HomeHero({ title, description }: HomeHeroProps) {
   return (
     <section className="relative bg-hero-bg text-hero-text overflow-hidden">
-      {/* subtle radial glow behind the chart */}
       <div
         className="absolute inset-0 opacity-60 pointer-events-none"
         style={{
@@ -23,7 +27,6 @@ export default function Hero({ title, description }: HeroProps) {
 
       <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
-
           {/* LEFT: Text */}
           <div>
             <p className="text-xs font-body text-primary uppercase tracking-[0.2em]">
@@ -38,7 +41,6 @@ export default function Hero({ title, description }: HeroProps) {
               {description}
             </p>
 
-            {/* Rotating statements */}
             <div className="mt-10 h-8">
               <FadeRotator
                 interval={3500}
@@ -80,9 +82,64 @@ export default function Hero({ title, description }: HeroProps) {
             </p>
             <GrowthChart />
           </div>
-
         </div>
       </div>
     </section>
   );
+}
+
+/* ============================================================
+   Page variant — small centered intro band
+   ============================================================ */
+
+type PageHeroProps = {
+  variant: "page";
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  background?: "white" | "gray";
+};
+
+function PageHero({
+  eyebrow,
+  title,
+  subtitle,
+  background = "gray",
+}: PageHeroProps) {
+  const bgClass = background === "gray" ? "bg-surface" : "bg-background";
+
+  return (
+    <section className={`py-20 px-6 ${bgClass}`}>
+      <div className="max-w-4xl mx-auto text-center">
+        {eyebrow && (
+          <p className="text-sm font-medium text-text-muted uppercase tracking-wider">
+            {eyebrow}
+          </p>
+        )}
+        <h1 className="mt-4 text-4xl md:text-5xl font-heading font-bold text-text">
+          {title}
+        </h1>
+        {subtitle && (
+          <p className="mt-4 text-lg text-text-muted leading-relaxed max-w-2xl mx-auto">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Public API — dispatcher
+   ============================================================ */
+
+export type HeroProps =
+  | ({ variant: "home" } & Omit<HomeHeroProps, "variant">)
+  | ({ variant: "page" } & Omit<PageHeroProps, "variant">);
+
+export default function Hero(props: HeroProps) {
+  if (props.variant === "page") {
+    return <PageHero {...props} />;
+  }
+  return <HomeHero {...props} />;
 }

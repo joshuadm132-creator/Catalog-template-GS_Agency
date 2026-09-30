@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { SOCIAL_ICONS, WhatsAppIcon, type SocialIconName } from "@/components/socialIcon";
+import {
+  SOCIAL_ICONS,
+  WhatsAppIcon,
+  type SocialIconName,
+} from "@/components/socialIcon";
 
 type SocialLink = {
   label?: string;
@@ -72,7 +76,6 @@ export default function Contact({
 
     setStatus("sending");
 
-    // Placeholder — we'll swap this for a real API call later
     try {
       await new Promise((resolve) => setTimeout(resolve, 1200));
       setStatus("sent");
@@ -84,42 +87,54 @@ export default function Contact({
   };
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="grid gap-12 md:grid-cols-2">
 
           {/* LEFT: Contact info */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 uppercase">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-text uppercase">
               Get in touch
             </h2>
-            <p className="mt-4 text-gray-600 leading-relaxed max-w-md">
+            <p className="mt-4 text-text-muted leading-relaxed max-w-md">
               Have a project in mind? Send us a message and we&apos;ll get back to you within one business day.
             </p>
 
             {/* Contact details */}
             <div className="mt-10 space-y-6">
               <div>
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone</p>
-                <a href={`tel:${phone.replace(/\s/g, "")}`} className="mt-1 block text-lg text-gray-900 hover:text-blue-600 transition">
+                <p className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+                  Phone
+                </p>
+                <a
+                  href={`tel:${phone.replace(/\s/g, "")}`}
+                  className="mt-1 block text-lg text-text hover:text-primary transition"
+                >
                   {phone}
                 </a>
               </div>
 
               <div>
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</p>
-                <a href={`mailto:${email}`} className="mt-1 block text-lg text-gray-900 hover:text-blue-600 transition">
+                <p className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+                  Email
+                </p>
+                <a
+                  href={`mailto:${email}`}
+                  className="mt-1 block text-lg text-text hover:text-primary transition"
+                >
                   {email}
                 </a>
               </div>
 
               <div>
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Address</p>
-                <p className="mt-1 text-lg text-gray-900">{address}</p>
+                <p className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+                  Address
+                </p>
+                <p className="mt-1 text-lg text-text">{address}</p>
               </div>
             </div>
 
-            {/* WhatsApp button */}
+            {/* WhatsApp button — brand green stays fixed */}
             {whatsapp && (
               <a
                 href={`https://wa.me/${whatsapp}`}
@@ -135,7 +150,9 @@ export default function Contact({
             {/* Socials */}
             {socials.length > 0 && (
               <div className="mt-10">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Follow us</p>
+                <p className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+                  Follow us
+                </p>
                 <div className="mt-3 flex gap-3">
                   {socials.map((social) => {
                     const Icon = SOCIAL_ICONS[social.icon];
@@ -147,7 +164,7 @@ export default function Contact({
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:text-white hover:bg-gray-900 hover:border-gray-900 transition"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-text-muted hover:text-text-inverse hover:bg-hero-bg hover:border-hero-bg transition"
                       >
                         <Icon className="w-4 h-4" />
                       </a>
@@ -160,18 +177,23 @@ export default function Contact({
 
           {/* RIGHT: Form */}
           {form && (
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-gray-900">{form.title}</h3>
-              <p className="mt-2 text-sm text-gray-600">{form.subtitle}</p>
+            <div className="bg-surface rounded-2xl p-8">
+              <h3 className="text-xl font-heading font-bold text-text">
+                {form.title}
+              </h3>
+              <p className="mt-2 text-sm text-text-muted">{form.subtitle}</p>
 
               {status === "sent" ? (
-                <div className="mt-8 p-6 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800">
+                <div className="mt-8 p-6 rounded-xl bg-accent/10 border border-accent/30 text-text">
                   {form.successMessage}
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   <div>
-                    <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-sm font-medium text-text"
+                    >
                       {form.fields.name}
                     </label>
                     <input
@@ -180,12 +202,15 @@ export default function Contact({
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-border bg-background text-text placeholder:text-text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-sm font-medium text-text"
+                    >
                       {form.fields.email}
                     </label>
                     <input
@@ -194,12 +219,15 @@ export default function Contact({
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-border bg-background text-text placeholder:text-text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="contact-phone"
+                      className="block text-sm font-medium text-text"
+                    >
                       {form.fields.phone}
                     </label>
                     <input
@@ -208,12 +236,15 @@ export default function Contact({
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-border bg-background text-text placeholder:text-text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-sm font-medium text-text"
+                    >
                       {form.fields.message}
                     </label>
                     <textarea
@@ -222,7 +253,7 @@ export default function Contact({
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition resize-none"
+                      className="mt-1 w-full px-4 py-2.5 rounded-lg border border-border bg-background text-text placeholder:text-text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition resize-none"
                     />
                   </div>
 
@@ -233,7 +264,7 @@ export default function Contact({
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full py-3 bg-primary text-text-inverse rounded-lg font-medium hover:bg-primary-hover transition disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {status === "sending" ? "Sending..." : form.submitLabel}
                   </button>

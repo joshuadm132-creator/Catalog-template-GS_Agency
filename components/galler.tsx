@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-
 import CustomSection from "@/components/section";
 
 type GalleryItem = {
@@ -17,14 +16,14 @@ type GalleryProps = {
 export default function Gallery({ title, items }: GalleryProps) {
   return (
     <CustomSection background="gray">
-      <h2 className="text-3xl font-bold text-center text-gray-900 uppercase">
+      <h2 className="text-3xl font-heading font-bold text-center text-text uppercase">
         {title}
       </h2>
 
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="mt-16 grid gap-8 grid-cols-[repeat(auto-fit,minmax(320px,1fr))]">
         {items.map((item, index) => (
           <Reveal key={item.title} delay={index * 100}>
-            <div className="group relative overflow-hidden rounded-xl border bg-white shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div className="group relative overflow-hidden rounded-xl border border-border bg-background shadow-sm hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-72 w-full overflow-hidden">
                 <Image
                   src={item.src}
@@ -36,7 +35,9 @@ export default function Gallery({ title, items }: GalleryProps) {
               </div>
 
               <div className="p-4">
-                <h3 className="font-semibold text-gray-800">{item.title}</h3>
+                <h3 className="font-heading font-semibold text-text">
+                  {item.title}
+                </h3>
               </div>
             </div>
           </Reveal>

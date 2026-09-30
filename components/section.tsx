@@ -4,7 +4,7 @@ type SectionProps = {
   children: ReactNode;
   className?: string;
   containerClassName?: string;
-  background?: "white" | "gray" | "none";
+  background?: "white" | "gray" | "dark" | "none";
 };
 
 export default function CustomSection({
@@ -15,9 +15,11 @@ export default function CustomSection({
 }: SectionProps) {
   const bgClass =
     background === "white"
-      ? "bg-white"
+      ? "bg-background text-text"
       : background === "gray"
-      ? "bg-gray-50"
+      ? "bg-surface text-text"
+      : background === "dark"
+      ? "bg-hero-bg text-hero-text"
       : "";
 
   return (

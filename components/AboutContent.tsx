@@ -19,10 +19,10 @@ type AboutContentProps = {
 
 export default function AboutContent({ title, contents }: AboutContentProps) {
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-24 px-6 bg-background">
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 uppercase text-center">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text uppercase text-center">
             {title}
           </h2>
         </Reveal>
@@ -39,13 +39,13 @@ export default function AboutContent({ title, contents }: AboutContentProps) {
                 {/* Text column */}
                 <div>
                   {content.subtitle && (
-                    <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                    <p className="text-sm font-semibold text-text-muted uppercase tracking-wider">
                       {content.subtitle}
                     </p>
                   )}
 
                   {content.paragraphs.map((p, i) => (
-                    <p key={i} className="mt-4 text-gray-600 leading-relaxed">
+                    <p key={i} className="mt-4 text-text-muted leading-relaxed">
                       {p}
                     </p>
                   ))}
@@ -53,8 +53,11 @@ export default function AboutContent({ title, contents }: AboutContentProps) {
                   {content.features && (
                     <ul className="mt-6 space-y-2">
                       {content.features.map((f, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-700">
-                          <span className="text-emerald-600 font-bold">✓</span>
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-text"
+                        >
+                          <span className="text-accent font-bold">✓</span>
                           <span>{f}</span>
                         </li>
                       ))}
@@ -64,15 +67,15 @@ export default function AboutContent({ title, contents }: AboutContentProps) {
                   {content.button && (
                     <Link
                       href={content.button.href}
-                      className="inline-block mt-8 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+                      className="inline-block mt-8 px-6 py-3 bg-primary text-text-inverse rounded-lg hover:bg-primary-hover transition font-medium"
                     >
                       {content.button.text}
                     </Link>
                   )}
                 </div>
 
-                {/* Image column — placeholder for now */}
-                <div className="aspect-[4/3] rounded-2xl bg-gray-100 overflow-hidden">
+                {/* Image column */}
+                <div className="aspect-[4/3] rounded-2xl bg-surface overflow-hidden">
                   {content.image ? (
                     <Image
                       src={content.image}
@@ -82,7 +85,7 @@ export default function AboutContent({ title, contents }: AboutContentProps) {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-300 text-sm">
+                    <div className="w-full h-full flex items-center justify-center text-text-muted/60 text-sm">
                       image coming soon
                     </div>
                   )}
