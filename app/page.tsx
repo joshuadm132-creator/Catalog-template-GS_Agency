@@ -14,6 +14,17 @@ export default function Home() {
         description="..."
       />
 
+         <FeatureGrid
+        eyebrow={business.whatWeDo.eyebrow}
+        title={business.whatWeDo.title}
+        subtitle={business.whatWeDo.subtitle}
+        items={business.whatWeDo.items}
+        variant={business.whatWeDo.variant}
+        columns={business.whatWeDo.columns}
+        background={business.whatWeDo.background}
+        cta={business.whatWeDo.cta}
+      />
+
           <FeatureGrid
         eyebrow={business.whyYouNeedWebsite.eyebrow}
         title={business.whyYouNeedWebsite.title}
@@ -23,17 +34,6 @@ export default function Home() {
         columns={business.whyYouNeedWebsite.columns}
         background={business.whyYouNeedWebsite.background}
         cta={business.whyYouNeedWebsite.cta}
-      />
-
-      <FeatureGrid
-        eyebrow={business.whatWeDo.eyebrow}
-        title={business.whatWeDo.title}
-        subtitle={business.whatWeDo.subtitle}
-        items={business.whatWeDo.items}
-        variant={business.whatWeDo.variant}
-        columns={business.whatWeDo.columns}
-        background={business.whatWeDo.background}
-        cta={business.whatWeDo.cta}
       />
 
       <FeatureGrid

@@ -151,7 +151,7 @@ function CardItem({ item }: { item: FeatureItem }) {
 function ListItem({ item }: { item: FeatureItem }) {
   return (
     <div className="flex gap-4 p-5 rounded-xl border border-border bg-background">
-      <div className="shrink-0 w-8 h-8 rounded-full bg-surface text-text-muted flex items-center justify-center font-bold">
+      <div className="shrink-0 w-8 h-8 rounded-full bg-red-300 text-text-muted flex items-center justify-center font-bold">
         ✕
       </div>
       <div>
