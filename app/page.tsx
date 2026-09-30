@@ -3,7 +3,7 @@ import Hero from "@/components/hero";
 import About from "@/components/AboutContent"
 import Services from "@/components/services"
 import { business } from "@/config/business";
-import Gallery from "@/components/galler";
+import FeatureGrid from "@/components/FeatureGrid";
 import Process from "@/components/workProcess";
 export default function Home() {
   return (
@@ -13,14 +13,46 @@ export default function Home() {
         title="Building the digital infrastructure for growing businesses."
         description="..."
       />
-    <div className="bg-primary text-text-inverse p-8 font-heading text-2xl">
-  Theme test
-</div>
-    <Services
-      headline={business.services.headline}
-      services={business.services.contents}
-        
+
+          <FeatureGrid
+        eyebrow={business.whyYouNeedWebsite.eyebrow}
+        title={business.whyYouNeedWebsite.title}
+        subtitle={business.whyYouNeedWebsite.subtitle}
+        items={business.whyYouNeedWebsite.items}
+        variant={business.whyYouNeedWebsite.variant}
+        columns={business.whyYouNeedWebsite.columns}
+        background={business.whyYouNeedWebsite.background}
+        cta={business.whyYouNeedWebsite.cta}
       />
+
+      <FeatureGrid
+        eyebrow={business.whatWeDo.eyebrow}
+        title={business.whatWeDo.title}
+        subtitle={business.whatWeDo.subtitle}
+        items={business.whatWeDo.items}
+        variant={business.whatWeDo.variant}
+        columns={business.whatWeDo.columns}
+        background={business.whatWeDo.background}
+        cta={business.whatWeDo.cta}
+      />
+
+      <FeatureGrid
+        eyebrow={business.whatWeDontDo.eyebrow}
+        title={business.whatWeDontDo.title}
+        subtitle={business.whatWeDontDo.subtitle}
+        items={business.whatWeDontDo.items}
+        variant={business.whatWeDontDo.variant}
+        columns={business.whatWeDontDo.columns}
+        background={business.whatWeDontDo.background}
+      />
+
+
+   <Services
+      headline={business.services.headline}
+      subheadline={business.services.subheadline}
+      services={business.services.contents}
+      variant="preview"
+    />
       <Process
         title={business.process.title}
         subtitle={business.process.subtitle}
