@@ -13,9 +13,13 @@ export default function Home() {
       title={business.name}
       description={business.description}
     />
-
+    <div className="bg-primary text-text-inverse p-8 font-heading text-2xl">
+  Theme test
+</div>
     <Services
-        services={business.services}
+      headline={business.services.headline}
+      services={business.services.contents}
+        
       />
       <Process
         title={business.process.title}

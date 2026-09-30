@@ -1,19 +1,19 @@
 "use client";
 
-
 import { useState } from "react";
 import Link from "next/link";
 import { business } from "@/config/business";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className="border-b bg-white">
+    <nav className="border-b border-border bg-background">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="py-5 flex items-center justify-between">
 
-          <Link href="/" className="text-2xl font-bold">
+          <Link href="/" className="text-2xl font-heading font-bold text-text">
             {business.name}
           </Link>
 
@@ -21,8 +21,8 @@ export default function Navbar() {
             {business.navigation.map((item) => (
               <Link
                 key={item?.href}
-                href={item?.href ?? '#'}
-                className="text-gray-600 hover:text-black transition"
+                href={item?.href ?? "#"}
+                className="text-text-muted hover:text-text transition"
               >
                 {item?.label}
               </Link>
@@ -33,10 +33,10 @@ export default function Navbar() {
             type="button"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
-            className="md:hidden text-2xl p-2"
+            className="md:hidden text-2xl p-2 text-text"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-           {menuOpen ? "✕" : "☰"}
+            {menuOpen ? "✕" : "☰"}
           </button>
 
         </div>
@@ -46,9 +46,9 @@ export default function Navbar() {
             {business.navigation.map((item) => (
               <Link
                 key={item?.href}
-                href={item?.href ?? '#'}
+                href={item?.href ?? "#"}
                 onClick={() => setMenuOpen(false)}
-                className="text-gray-600 hover:text-black transition "
+                className="text-text-muted hover:text-text transition"
               >
                 {item?.label}
               </Link>

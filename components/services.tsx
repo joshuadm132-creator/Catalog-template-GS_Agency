@@ -24,11 +24,13 @@ type Service = {
 };
 
 type ServicesProps = {
+  headline: string;
   services: Service[];
   variant?: "preview" | "full";
 };
 
 export default function Services({
+  headline,
   services,
   variant = "preview",
 }: ServicesProps) {
@@ -38,7 +40,7 @@ export default function Services({
 
         {/* MAIN TITLE */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center uppercase">
-          Our Services
+          {headline}
         </h2>
 
 

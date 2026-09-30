@@ -7,7 +7,8 @@ export default function Home() {
     <main>
 
  <Services
-        services={business.services}
+        headline={business.services.headline}
+        services={business.services.contents}
         variant ="full"
       />
       </main>

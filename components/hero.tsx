@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FadeRotator,{Marquee} from "@/components/FadeRotator";
+import FadeRotator from "@/components/FadeRotator";
 import GrowthChart from "@/components/growthChart";
 import { business } from "@/config/business";
 
@@ -10,13 +10,14 @@ type HeroProps = {
 
 export default function Hero({ title, description }: HeroProps) {
   return (
-    <section className="relative bg-[#0a1628] text-white overflow-hidden">
+    <section className="relative bg-hero-bg text-hero-text overflow-hidden">
       {/* subtle radial glow behind the chart */}
       <div
         className="absolute inset-0 opacity-60 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 75% 50%, rgba(59, 246, 230, 0.18), transparent 60%)",
+            "radial-gradient(ellipse at 75% 50%, var(--color-primary), transparent 60%)",
+          opacity: 0.15,
         }}
       />
 
@@ -25,15 +26,15 @@ export default function Hero({ title, description }: HeroProps) {
 
           {/* LEFT: Text */}
           <div>
-            <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em]">
+            <p className="text-xs font-body text-primary uppercase tracking-[0.2em]">
               {business.name}
             </p>
 
-            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-heading tracking-tight leading-[1.05]">
               {title}
             </h1>
 
-            <p className="mt-6 text-lg text-blue-100/70 max-w-lg leading-relaxed">
+            <p className="mt-6 text-lg text-hero-text/70 max-w-lg leading-relaxed">
               {description}
             </p>
 
@@ -43,13 +44,13 @@ export default function Hero({ title, description }: HeroProps) {
                 interval={3500}
                 fadeDuration={500}
                 items={[
-                  <p key="1" className="text-blue-300 font-medium">
+                  <p key="1" className="text-primary font-medium">
                     Don't be left behind.
                   </p>,
-                  <p key="2" className="text-blue-300 font-medium">
+                  <p key="2" className="text-primary font-medium">
                     Growth happens online.
                   </p>,
-                  <p key="3" className="text-blue-300 font-medium">
+                  <p key="3" className="text-primary font-medium">
                     Your competitors are already there.
                   </p>,
                 ]}
@@ -59,13 +60,13 @@ export default function Hero({ title, description }: HeroProps) {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-400 transition font-medium"
+                className="px-6 py-3 bg-primary text-text-inverse rounded-lg hover:bg-primary-hover transition font-medium"
               >
                 Get Started
               </Link>
               <Link
                 href="/services"
-                className="px-6 py-3 border border-blue-400/30 text-blue-100 rounded-lg hover:bg-blue-400/10 transition font-medium"
+                className="px-6 py-3 border border-primary/30 text-hero-text rounded-lg hover:bg-primary/10 transition font-medium"
               >
                 Our Services
               </Link>
@@ -74,9 +75,10 @@ export default function Hero({ title, description }: HeroProps) {
 
           {/* RIGHT: Chart */}
           <div className="relative">
-            <p className="text-2xl font-semibold text-green-500 text-sm uppercase">Website Growht worldwide</p>
+            <p className="text-sm font-semibold text-accent uppercase tracking-wide">
+              Website Growth Worldwide
+            </p>
             <GrowthChart />
-          
           </div>
 
         </div>
