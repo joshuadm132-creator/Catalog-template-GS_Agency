@@ -1,17 +1,45 @@
+import { type SocialIconName } from "@/components/socialIcon";
+
+type SocialConfig = {
+  label: string;
+  href: string;
+  icon: SocialIconName;
+};
+
+
 export const business = {
   name: "Talos Industies",
   logo: "TALOS",
   description: "Building the digital infrastructure for growing businesses",
 
   location: "Harare, Zimbabwe",
+contact: {
+  phone: "077 123 4567",
+  email: "info@talosindustries.co.zw",
+  address: "Harare, Zimbabwe",
 
-  contact: {
-    phone: "077 123 4567",
-    email: "info@denzelsauto.co.zw",
-    adress:"Harare, Zimbabwe",
+  whatsapp: "263771234567",   // international format, no +
 
+  socials: [
+    { label: "Instagram", href: "https://instagram.com/talos", icon: "instagram" },
+    { label: "LinkedIn",  href: "https://linkedin.com/company/talos", icon: "linkedin" },
+    { label: "Facebook",  href: "https://facebook.com/talos", icon: "facebook" },
+    { label: "X",         href: "https://x.com/talos", icon: "x" },
+  ]as SocialConfig[],
 
+  form: {
+    title: "Send us a message",
+    subtitle: "We'll get back to you within one business day.",
+    fields: {
+      name: "Your name",
+      email: "Email address",
+      phone: "Phone (optional)",
+      message: "Tell us about your project",
+    },
+    submitLabel: "Send message",
+    successMessage: "Thanks — we'll be in touch soon.",
   },
+},
   navigation: [
     {
       label: "Home",
@@ -117,63 +145,137 @@ export const business = {
     },
   ],
 },
-  services:[
-          {
-            id: "seo",
-            title: "SEO",
-            description: `Increase Your Visibility throughput the web`,
-            content:[
-              {
-                id:"SEO-section",
-              subtitle: "Developing Zimbabwe into a sustained future.",
-              paragraphs: [
-                "One more thing worth deciding before you launch: how you'll actually collect the monthly subscription. Given the local context, expect most Starter/Business tier clients to prefer EcoCash or bank transfer over a card-based auto-billing tool — so plan for manual monthly invoicing early on rather than assuming a subscription platform will handle it for you automatically.",
-                "Our goal is to deliver quality while building lasting relationships.",
-              ],
-
-              features: [
-                "Experienced team",
-                "Quality service",
-                "Reliable support",
-                "Affordable pricing",
-                ],  
-                
-              },
-            ],
-          },
-          {
-            id: "web-development",
-            title: "Web Development",
-            description: "We build modern websites for businesses.",
-            content:[
-              {
-                id: "digital-presence",
+  services: [
+        {
+          id: "web-development",
+          title: "Web Development",
+          description: "We build modern, professional websites that put your business on the map.",
+          content: [
+            {
+              id: "digital-presence",
               subtitle: "Building a stronger digital presence",
               paragraphs: [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "Lorem ipsum dolor sit amet,  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                "We design and build websites for businesses that want a professional online presence — from portfolios and company profiles to hospitality, engineering, and service-based businesses. Your site becomes the place customers go to see who you are, what you offer, and how to reach you.",
+                "Technically, we build with modern frameworks (Next.js, React, Tailwind CSS) hosted on high-performance infrastructure. Every site is responsive by default, optimized for fast load times, and built with clean, semantic code that supports both search engines and accessibility tools."
               ],
-
               features: [
-                "Responsive websites",
-                "Mobile-friendly design",
-                "SEO-friendly structure"
+                "Custom-designed pages, not templates",
+                "Mobile-friendly, responsive on all devices",
+                "Fast load times, optimized images",
+                "Built on modern, secure hosting infrastructure"
               ],
-
-              button: {
-                text: "Contact Us",
-                href: "/contact"
-              },
-            },]
-          },
-
-          {
-            id:" Maintanance",
-            title: "Website maintanance Changes",
-            description: "Keep your systems running smoothly.",
-          },
-           
-        ],
+              button: { text: "Get Started", href: "/contact" }
+            }
+          ]
+        },
+        {
+          id: "listings-booking",
+          title: "Property & Listings Websites",
+          description: "Showcase rooms, properties, or inventory with inquiry-based listings — no online payment required.",
+          content: [
+            {
+              id: "listings-section",
+              subtitle: "Put your listings in front of the right people",
+              paragraphs: [
+                "If you run a lodge, guesthouse, or property business, we can build a listings site showing your rooms or properties with photos, pricing, and availability. Visitors browse and enquire directly with you — you handle the booking and payment yourself, the way you do now.",
+                "This is built as a content-driven listing system rather than a transactional booking engine: no payment processing or personal data storage happens on the site itself. Enquiries are routed to you via a secure contact form or WhatsApp link, keeping the site simple, fast, and free of the compliance burden that comes with handling bookings and payments directly."
+              ],
+              features: [
+                "Photo galleries per listing",
+                "Pricing and availability display",
+                "Direct enquiry via form or WhatsApp",
+                "No sensitive data stored on the site"
+              ],
+              button: { text: "Discuss Your Listings", href: "/contact" }
+            }
+          ]
+        },
+        {
+          id: "payment-integration",
+          title: "Payment Gateway Linking",
+          description: "Accept payments through trusted, established providers like Paynow — securely linked to your site.",
+          content: [
+            {
+              id: "payment-section",
+              subtitle: "Get paid, without us handling your money",
+              paragraphs: [
+                "For businesses that need to accept online payments, we connect your website to established, licensed payment providers such as Paynow. Customers pay through the provider's secure system — we simply build the link between your site and that trusted service.",
+                "We integrate via the payment provider's official API, meaning transactions and sensitive card or mobile-money data are handled entirely by the licensed gateway, never stored or processed on our infrastructure. This keeps your business compliant without requiring us to hold a payment services or data protection license ourselves."
+              ],
+              features: [
+                "Integration with licensed providers (e.g. Paynow)",
+                "No card or payment data stored on our side",
+                "Secure redirect-based payment flow",
+                "Clear confirmation and receipt handling"
+              ],
+              button: { text: "Ask About Payments", href: "/contact" }
+            }
+          ]
+        },
+        {
+          id: "seo",
+          title: "SEO",
+          description: "Increase your visibility and help the right customers find you online.",
+          content: [
+            {
+              id: "seo-section",
+              subtitle: "Getting found by the people who matter",
+              paragraphs: [
+                "A great website only helps your business if people can actually find it. We optimize every site so it shows up when your customers search — covering your business name, location, and services.",
+                "Technically, this includes clean semantic HTML structure, optimized meta titles and descriptions, sitemap and robots.txt configuration, image alt attributes, mobile-first performance tuning, and Google Search Console and Google Business Profile setup. For Growth and Pro clients, we add ongoing keyword tracking and monthly ranking reports."
+              ],
+              features: [
+                "Search-optimized page structure and metadata",
+                "Google Business Profile setup",
+                "Mobile-first, fast-loading pages",
+                "Monthly ranking reports (Growth/Pro tiers)"
+              ]
+            }
+          ]
+        },
+        {
+          id: "accessibility",
+          title: "Accessibility Optimisation",
+          description: "Websites that work for everyone, including people using assistive technology.",
+          content: [
+            {
+              id: "accessibility-section",
+              subtitle: "Built so nobody is left out",
+              paragraphs: [
+                "We design every site so it's usable by as many people as possible — including those using screen readers, keyboard navigation, or slower connections. This isn't an add-on; it's part of how we build from day one.",
+                "Technically, this means semantic HTML, proper heading hierarchy, sufficient color contrast, descriptive alt text, keyboard-navigable interactive elements, and ARIA labeling where needed, tested against WCAG 2.2 AA guidelines using both automated tools (axe, Lighthouse) and manual screen-reader testing."
+              ],
+              features: [
+                "WCAG 2.2 AA-guided design",
+                "Screen reader and keyboard navigation support",
+                "Color contrast and readable typography",
+                "Manual + automated accessibility testing"
+              ]
+            }
+          ]
+        },
+        {
+          id: "maintenance",
+          title: "Website Maintenance & Changes",
+          description: "Keep your site accurate, current, and running smoothly after launch.",
+          content: [
+            {
+              id: "maintenance-section",
+              subtitle: "Your site stays fresh, not frozen in time",
+              paragraphs: [
+                "Once your site is live, we keep it updated — new prices, new photos, new services, or small text changes — so it never feels outdated. You focus on your business; we keep the website current.",
+                "This covers content updates via direct code changes or a lightweight CMS where applicable, dependency and security patching, hosting monitoring, and periodic performance and accessibility re-checks, with update allowances scaled by subscription tier."
+              ],
+              features: [
+                "Regular content updates",
+                "Security and dependency patching",
+                "Uptime and performance monitoring",
+                "Update allowance scales with your plan"
+              ]
+            }
+          ]
+        }
+      ],
         
         Values: {
           title: "About Our Business",
@@ -216,10 +318,10 @@ export const business = {
           content: [
             {
               id: "SBU",
-              subtitle: "SBU : Technical Back-End Specialist",
+              subtitle: "Demitry : Technical Back-End & Systems Specialist",
               image: "https://picsum.photos/seed/sbu/400/400",
               paragraphs: [
-                "Sbu leads our back-end operations, ensuring that the foundational infrastructure powering our client websites is secure, scalable, and resilient. With a background in Computer Science from the Open University, he specializes in building robust systems behind the scenes. From integrating seamless payment gateways to designing secure sign-in logs and user authentication flows, Sbu ensures every core system runs smoothly and reliably."
+                "Sbu oversees our back-end architecture, platform integrations, and core infrastructure[cite: 3]. Currently pursuing a Bachelor of Science in Computer Science at the University of the People, he brings practical full-stack software development and systems engineering experience—ranging from building web platforms with Next.js, Node.js, and PostgreSQL to implementing Payload CMS integrations[cite: 3]. Sbu ensures our digital solutions are secure, seamless, and built on reliable back-end logic[cite: 3]."
               ],
               features: [
                 "Experienced team",
@@ -422,8 +524,12 @@ export const business = {
             {
               title: "Connect",
               links: [
-                { label: "GitHub", href: "https://github.com"},
-                { label: "LinkedIn", href: "https://linkedin.com"},
+                
+              { label: "Instagram", href: "https://instagram.com/talos", icon: "instagram" },
+              { label: "LinkedIn",  href: "https://linkedin.com/company/talos", icon: "linkedin" },
+              { label: "Facebook",  href: "https://facebook.com/talos", icon: "facebook" },
+              { label: "X",         href: "https://x.com/talos", icon: "x" },
+
               ],
             },
           ],
