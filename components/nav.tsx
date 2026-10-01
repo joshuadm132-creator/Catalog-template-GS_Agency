@@ -13,7 +13,7 @@ export default function Navbar() {
 
         <div className="py-5 flex items-center justify-between">
 
-          <Link href="/" className="text-5xl font-heading font-bold text-text">
+          <Link href="/" className="text-2xl md:text-5xl font-heading font-bold text-text">
             {business.name}
           </Link>
 
