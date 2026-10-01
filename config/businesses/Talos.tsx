@@ -944,6 +944,9 @@ export const Talos = {
           { label: "Web Development", href: "/services#digital-presence" },
           { label: "SEO Optimisation", href: "/services#seo-section" },
           { label: "Maintenance", href: "/services#maintenance-section" },
+          { label: "Payment Gateway", href: "/services#payment-section" },
+          { label: "Accessibility", href: "/services#accessibility-section" },
+          { label: "Property and Listings Websites", href: "/services#listings-section" },
         ],
       },
       {
