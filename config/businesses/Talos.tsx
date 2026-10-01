@@ -44,11 +44,10 @@ export const Talos = {
   },
   navigation: [
     { label: "Home",     href: "/" },
+    { label: "Services", href: "/Services" },
+    { label: "Packages",  href: "/pricing" },
     { label: "About",    href: "/about" },
     { label: "Contact",  href: "/contact" },
-    { label: "Gallery",  href: "/gallery" },
-    { label: "Pricing",  href: "/pricing" },
-    { label: "Services", href: "/Services" },
   ],
   // business.tsx — add this field to your business object
 
