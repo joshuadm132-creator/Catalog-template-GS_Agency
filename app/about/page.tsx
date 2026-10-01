@@ -7,41 +7,62 @@ export default function AboutPage() {
   return (
     <main>
 
-
-      {/* 1. Intro — small, focused */}
       <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
-            About Us
-          </p>
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold text-gray-900">
-            We build digital infrastructure for growing businesses.
-          </h1>
-        </div>
-      </section>
+  <div className="max-w-4xl mx-auto text-center">
 
-      {/* 2. Your values/mission — content blocks */}
+    <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+      {business.About.intro.eyebrow}
+    </p>
+
+    <h1 className="mt-4 text-4xl md:text-5xl font-bold text-gray-900">
+      {business.About.intro.headline}
+    </h1>
+
+    <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+      {business.About.intro.description}
+    </p>
+
+  </div>
+</section>
+
+
+      {/* 2. About / Mission / Vision */}
+      <AboutContent
+        title={business.About.title}
+        contents={business.About.content}
+      />
+
+
+      {/* 3. Values */}
       <AboutContent
         title={business.Values.title}
         contents={business.Values.content}
       />
 
-      {/* 3. The team — rotating */}
+
+      {/* 4. Team */}
       <TeamRotator
         title={business.Team.title}
         contents={business.Team.content}
       />
 
-      {/* 4. CTA */}
+
+      {/* 5. CTA */}
       <section className="py-20 px-6 bg-black text-white text-center">
-        <h2 className="text-3xl font-bold">Want to work with us?</h2>
+
+        <h2 className="text-3xl font-bold">
+          Want to work with us?
+        </h2>
+
         <Link
           href="/contact"
           className="inline-block mt-8 px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition"
         >
           Get in touch
         </Link>
+
       </section>
+
     </main>
   );
 }

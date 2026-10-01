@@ -16,7 +16,7 @@ export default function Home() {
         description="..."
       />
 
-         <FeatureGrid
+      <FeatureGrid
         eyebrow={business.whatWeDo.eyebrow}
         title={business.whatWeDo.title}
         subtitle={business.whatWeDo.subtitle}

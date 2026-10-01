@@ -9,7 +9,10 @@ type Content = {
   paragraphs: string[];
   features?: string[];
   image?: string;
-  button?: { text: string; href: string };
+  button?: {
+    text: string;
+    href: string;
+  };
 };
 
 type AboutContentProps = {
@@ -17,10 +20,14 @@ type AboutContentProps = {
   contents: Content[];
 };
 
-export default function AboutContent({ title, contents }: AboutContentProps) {
+export default function AboutContent({
+  title,
+  contents,
+}: AboutContentProps) {
   return (
     <section className="py-24 px-6 bg-background">
       <div className="max-w-5xl mx-auto">
+
         <Reveal>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-text uppercase text-center">
             {title}
@@ -28,37 +35,49 @@ export default function AboutContent({ title, contents }: AboutContentProps) {
         </Reveal>
 
         <div className="mt-16 space-y-24">
+
           {contents.map((content, index) => (
             <Reveal key={content.id} delay={index * 150}>
+
               <div
                 id={content.id}
                 className={`grid gap-10 md:grid-cols-2 md:items-center ${
-                  index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+                  index % 2 === 1
+                    ? "md:[&>*:first-child]:order-2"
+                    : ""
                 }`}
               >
-                {/* Text column */}
+
+                {/* Text */}
                 <div>
+
                   {content.subtitle && (
                     <p className="text-sm font-semibold text-text-muted uppercase tracking-wider">
                       {content.subtitle}
                     </p>
                   )}
 
-                  {content.paragraphs.map((p, i) => (
-                    <p key={i} className="mt-4 text-text-muted leading-relaxed">
-                      {p}
+                  {content.paragraphs.map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="mt-4 text-text-muted leading-relaxed"
+                    >
+                      {paragraph}
                     </p>
                   ))}
 
                   {content.features && (
                     <ul className="mt-6 space-y-2">
-                      {content.features.map((f, i) => (
+                      {content.features.map((feature, i) => (
                         <li
                           key={i}
                           className="flex items-start gap-2 text-text"
                         >
-                          <span className="text-accent font-bold">✓</span>
-                          <span>{f}</span>
+                          <span className="text-accent font-bold">
+                            ✓
+                          </span>
+
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -72,10 +91,12 @@ export default function AboutContent({ title, contents }: AboutContentProps) {
                       {content.button.text}
                     </Link>
                   )}
+
                 </div>
 
-                {/* Image column */}
+                {/* Image */}
                 <div className="aspect-[4/3] rounded-2xl bg-surface overflow-hidden">
+
                   {content.image ? (
                     <Image
                       src={content.image}
@@ -89,10 +110,14 @@ export default function AboutContent({ title, contents }: AboutContentProps) {
                       image coming soon
                     </div>
                   )}
+
                 </div>
+
               </div>
+
             </Reveal>
           ))}
+
         </div>
       </div>
     </section>
