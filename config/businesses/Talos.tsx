@@ -398,8 +398,7 @@ export const Talos = {
       {
         id: "basic",
         name: "Starter Pack",
-        price: "$40–$80",
-        monthlyFee: "$5–$10/mo",
+        monthlyFee: "$10–$15/mo",
         popular: false,
         description: "Essential landing page design and ongoing basic maintenance for individuals.",
         features: [
@@ -413,8 +412,7 @@ export const Talos = {
       {
         id: "Business",
         name: "Business",
-        price: "$150–$250",
-        monthlyFee: "$10–$30/mo",
+        monthlyFee: "$10–$40/mo",
         popular: false,
         description: "Complete website setup with active SEO and regular content updates.",
         features: [
@@ -428,8 +426,7 @@ export const Talos = {
       {
         id: "Advanced",
         name: "Business Pro",
-        price: "$350–$600",
-        monthlyFee: "$30–$80/mo",
+        monthlyFee: "$50–$90/mo",
         popular: false,
         description: "Custom high-capacity build with full SEO optimization and priority edits.",
         features: [

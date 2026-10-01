@@ -8,7 +8,6 @@ export default function Home() {
 
       <Pricing
         tiers={business.Pricing.teir}
-        
         comparisonFeatures={business.Pricing.table}
       />
     </main>

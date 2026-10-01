@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { business } from "@/config/business";
-
+import Image from "next/image";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -13,8 +13,18 @@ export default function Navbar() {
 
         <div className="py-5 flex items-center justify-between">
 
-          <Link href="/" className="text-2xl md:text-5xl font-heading font-bold text-text">
-            {business.name}
+         <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="Logo.jpeg" 
+              alt={`${business.name} Logo`}
+              width={40}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+            <span className="text-2xl md:text-3xl font-heading font-bold text-text">
+              {business.name}
+            </span>
           </Link>
 
           <div className="hidden md:flex gap-6">

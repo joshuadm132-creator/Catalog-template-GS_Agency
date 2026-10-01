@@ -1,12 +1,12 @@
 import { bakeryTheme } from "../themes";
+
 export const bakery = {
   name: "Sweet Crumb Bakery",
   logo: "SWEET CRUMB",
-  tagline:" crumble bakery",
+  tagline: "Crumble Bakery",
   description: "Fresh bread, pastries, and cakes baked daily in Harare.",
   location: "Avondale, Harare",
   theme: bakeryTheme,
-
 
   contact: {
     phone: "077 987 6543",
@@ -32,57 +32,68 @@ export const bakery = {
   },
 
   navigation: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Menu", href: "/Services" },
+    { label: "Home",    href: "/" },
+    { label: "About",   href: "/about" },
+    { label: "Menu",    href: "/Services" },
     { label: "Gallery", href: "/gallery" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Contact", href: "/contact" },
   ],
 
-  services: {headline:"Our menu",
-    contents:[
-    {
-      id: "bread",
-      title: "Daily Bread",
-      description: "Fresh loaves baked every morning.",
-      content: [
-        {
-          id: "bread-detail",
-          subtitle: "Baked before sunrise",
-          paragraphs: [
-            "Our bread is baked fresh each morning using traditional methods and locally-sourced flour.",
-          ],
-          features: ["Sourdough", "Whole wheat", "Rye", "Multigrain"],
-        },
-      ],
-    },
-    {
-      id: "pastries",
-      title: "Pastries",
-      description: "Croissants, danishes, and seasonal treats.",
-      content: [
-        {
-          id: "pastry-detail",
-          subtitle: "Flaky and buttery",
-          paragraphs: ["Laminated by hand, baked to golden perfection."],
-          features: ["Croissants", "Danishes", "Cinnamon rolls"],
-        },
-      ],
-    },
-    {
-      id: "cakes",
-      title: "Custom Cakes",
-      description: "Celebration cakes for every occasion.",
-      content: [
-        {
-          id: "cake-detail",
-          subtitle: "Made to order",
-          paragraphs: ["Birthdays, weddings, and everything in between."],
-          features: ["Buttercream", "Fondant", "Vegan options"],
-        },
-      ],
-    },
-  ]},
+  services: {
+    headline: "Our Menu",
+    subheadline:
+      "Baked fresh every morning in Avondale — bread, pastries, and cakes made the traditional way.",
+    contents: [
+      {
+        id: "bread",
+        tag: "Daily",
+        title: "Daily Bread",
+        description: "Fresh loaves baked every morning.",
+        content: [
+          {
+            id: "bread-detail",
+            subtitle: "Baked before sunrise",
+            paragraphs: [
+              "Our bread is baked fresh each morning using traditional methods and locally-sourced flour.",
+            ],
+            features: ["Sourdough", "Whole wheat", "Rye", "Multigrain"],
+          },
+        ],
+        button: { text: "Order Bread", href: "/contact" },
+      },
+      {
+        id: "pastries",
+        tag: "Fresh",
+        title: "Pastries",
+        description: "Croissants, danishes, and seasonal treats.",
+        content: [
+          {
+            id: "pastry-detail",
+            subtitle: "Flaky and buttery",
+            paragraphs: ["Laminated by hand, baked to golden perfection."],
+            features: ["Croissants", "Danishes", "Cinnamon rolls"],
+          },
+        ],
+        button: { text: "Order Pastries", href: "/contact" },
+      },
+      {
+        id: "cakes",
+        tag: "Custom",
+        title: "Custom Cakes",
+        description: "Celebration cakes for every occasion.",
+        content: [
+          {
+            id: "cake-detail",
+            subtitle: "Made to order",
+            paragraphs: ["Birthdays, weddings, and everything in between."],
+            features: ["Buttercream", "Fondant", "Vegan options"],
+          },
+        ],
+        button: { text: "Order a Cake", href: "/contact" },
+      },
+    ],
+  },
 
   process: {
     title: "How to Order",
@@ -123,8 +134,10 @@ export const bakery = {
         subtitle: "A family bakery since 2015",
         paragraphs: [
           "Sweet Crumb started in a small kitchen and grew into one of Avondale's favourite bakeries.",
+          "Every recipe is made in-house, from sourdough starters to buttercream icings — nothing is bought in frozen or pre-made.",
         ],
         features: ["Local ingredients", "Family recipes", "Daily fresh"],
+        button: { text: "Visit Us", href: "/contact" },
       },
     ],
   },
@@ -135,13 +148,19 @@ export const bakery = {
       {
         id: "mary",
         subtitle: "Mary — Head Baker",
-        paragraphs: ["Mary learned to bake from her grandmother and has been perfecting recipes for 20 years."],
+        image: "https://picsum.photos/seed/mary/400/400",
+        paragraphs: [
+          "Mary learned to bake from her grandmother and has been perfecting recipes for 20 years.",
+        ],
         features: ["Sourdough specialist", "Wedding cakes"],
       },
       {
         id: "john",
         subtitle: "John — Pastry Chef",
-        paragraphs: ["John trained in Paris and brings classic French technique to every pastry."],
+        image: "https://picsum.photos/seed/john/400/400",
+        paragraphs: [
+          "John trained in Paris and brings classic French technique to every pastry.",
+        ],
         features: ["Laminated doughs", "Chocolate work"],
       },
     ],
@@ -150,10 +169,10 @@ export const bakery = {
   Gallery: {
     title: "From Our Oven",
     items: [
-      { title: "Sourdough", src: "https://picsum.photos/seed/bread/600/800", alt: "Fresh sourdough" },
-      { title: "Croissants", src: "https://picsum.photos/seed/croissant/600/800", alt: "Golden croissants" },
-      { title: "Birthday Cake", src: "https://picsum.photos/seed/cake/600/800", alt: "Birthday cake" },
-      { title: "Shop Front", src: "https://picsum.photos/seed/shop/600/800", alt: "Our shop" },
+      { title: "Sourdough",     src: "https://picsum.photos/seed/bread/600/800",     alt: "Fresh sourdough" },
+      { title: "Croissants",    src: "https://picsum.photos/seed/croissant/600/800", alt: "Golden croissants" },
+      { title: "Birthday Cake", src: "https://picsum.photos/seed/cake/600/800",      alt: "Birthday cake" },
+      { title: "Shop Front",    src: "https://picsum.photos/seed/shop/600/800",      alt: "Our shop" },
     ],
   },
 
@@ -167,7 +186,7 @@ export const bakery = {
         price: "$25",
         monthlyFee: "",
         popular: false,
-        description: "Serves 8-10 people.",
+        description: "Serves 8–10 people.",
         features: ["Single tier", "Simple decoration", "Standard flavours"],
         ctaText: "Order now",
       },
@@ -177,7 +196,7 @@ export const bakery = {
         price: "$50",
         monthlyFee: "",
         popular: true,
-        description: "Serves 20-25 people.",
+        description: "Serves 20–25 people.",
         features: ["Two tiers", "Custom colours", "Choice of filling"],
         ctaText: "Order now",
       },
@@ -192,7 +211,32 @@ export const bakery = {
         ctaText: "Contact us",
       },
     ],
-    table: [],
+    table: [
+      {
+        featureName: "Servings",
+        tierValues: { small: "8–10", medium: "20–25", large: "50+" },
+      },
+      {
+        featureName: "Tiers",
+        tierValues: { small: "1", medium: "2", large: "3" },
+      },
+      {
+        featureName: "Custom decoration",
+        tierValues: { small: false, medium: true, large: true },
+      },
+      {
+        featureName: "Choice of filling",
+        tierValues: { small: false, medium: true, large: true },
+      },
+      {
+        featureName: "Tasting session",
+        tierValues: { small: false, medium: false, large: true },
+      },
+      {
+        featureName: "Delivery available",
+        tierValues: { small: true, medium: true, large: true },
+      },
+    ],
   },
 
   footerData: {
@@ -202,17 +246,25 @@ export const bakery = {
       {
         title: "Menu",
         links: [
-          { label: "Bread", href: "/Services#bread" },
+          { label: "Bread",    href: "/Services#bread" },
           { label: "Pastries", href: "/Services#pastries" },
-          { label: "Cakes", href: "/Services#cakes" },
+          { label: "Cakes",    href: "/Services#cakes" },
         ],
       },
       {
         title: "Visit",
         links: [
-          { label: "About", href: "/about" },
+          { label: "About",   href: "/about" },
           { label: "Gallery", href: "/gallery" },
+          { label: "Pricing", href: "/pricing" },
           { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        title: "Connect",
+        links: [
+          { label: "Instagram", href: "https://instagram.com/sweetcrumb" },
+          { label: "Facebook",  href: "https://facebook.com/sweetcrumb" },
         ],
       },
     ],

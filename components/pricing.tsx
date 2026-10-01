@@ -4,7 +4,7 @@ import CustomSection from "@/components/section";
 export type ServiceTier = {
   id: string;
   name: string;
-  price: string;
+  price?: string;
   period?: string;
   description: string;
   popular?: boolean;
