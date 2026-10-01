@@ -145,7 +145,7 @@ export const Talos = {
             id: "digital-presence",
             subtitle: "Building a stronger digital presence",
             paragraphs: [
-              "We design and build websites for businesses that want a professional online presence — from portfolios and company profiles to hospitality, engineering, and service-based businesses.",
+              "We design and build websites for businesses that want a professional online presence. From portfolios and company profiles to hospitality, engineering, and service-based businesses.",
               "Technically, we build with modern frameworks (Next.js, React, Tailwind CSS) hosted on high-performance infrastructure. Every site is responsive by default, optimized for fast load times, and built with clean, semantic code.",
             ],
             features: [
@@ -163,7 +163,7 @@ export const Talos = {
         tag: "Listings",
         title: "Property & Listings Websites",
         description:
-          "Showcase rooms, properties, or inventory with inquiry-based listings — no online payment required.",
+          "Showcase rooms, properties, or inventory with inquiry-based listings, No online payment required.",
         content: [
           {
             id: "listings-section",
@@ -187,7 +187,7 @@ export const Talos = {
         tag: "Payments",
         title: "Payment Gateway Linking",
         description:
-          "Accept payments through trusted, established providers like Paynow — securely linked to your site.",
+          "Accept payments through trusted, established providers like Paynow, Securely linked to your site.",
         content: [
           {
             id: "payment-section",
@@ -209,9 +209,9 @@ export const Talos = {
       {
         id: "seo",
         tag: "SEO",
-        title: "SEO",
+        title: "SEO (Search Enging Optimisation)",
         description:
-          "Increase your visibility and help the right customers find you online.",
+          "Always found at the top of search results. Increase your visibility and help the right customers find you online.",
         content: [
           {
             id: "seo-section",

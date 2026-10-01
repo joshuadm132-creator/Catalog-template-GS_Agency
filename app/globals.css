@@ -16,7 +16,7 @@
 
   --color-hero-bg: #0a1628;
   --color-hero-text: #ffffff;
-
+  --color-ligter-gr:#0f5848;
   /* Fonts — defaults, overridden at runtime */
   --font-body: system-ui, -apple-system, sans-serif;
   --font-heading: system-ui, -apple-system, sans-serif;

@@ -5,6 +5,8 @@ import Services from "@/components/services"
 import { business } from "@/config/business";
 import FeatureGrid from "@/components/FeatureGrid";
 import Process from "@/components/workProcess";
+ import OurWork from "@/components/workPreview";
+
 export default function Home() {
   return (
    <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
@@ -45,19 +47,21 @@ export default function Home() {
         columns={business.whatWeDontDo.columns}
         background={business.whatWeDontDo.background}
       />
-
-
+   
+    <OurWork />
+  <Process
+          title={business.process.title}
+          subtitle={business.process.subtitle}
+          steps={business.process.steps}
+          variant="flow"
+        />
    <Services
       headline={business.services.headline}
       subheadline={business.services.subheadline}
       services={business.services.contents}
       variant="preview"
     />
-      <Process
-        title={business.process.title}
-        subtitle={business.process.subtitle}
-        steps={business.process.steps}
-      />
+     
 
 
     </main>

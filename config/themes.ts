@@ -11,6 +11,7 @@ export type Theme = {
   heroBg: string;
   heroText: string;
   fontBody: string;
+  ligterbg?:string;
   fontHeading: string;
 };
 
@@ -26,6 +27,7 @@ export const talosTheme: Theme = {
   textInverse: "#ffffff",
   heroBg: "#0a1628",
   heroText: "#ffffff",
+  ligterbg:"#150938" ,
   fontBody: "var(--font-inter), system-ui, sans-serif",
   fontHeading: "var(--font-inter), system-ui, sans-serif",
 };

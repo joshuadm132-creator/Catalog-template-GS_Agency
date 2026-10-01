@@ -16,5 +16,6 @@ export function themeToCssVars(theme: Theme): CSSProperties {
     "--color-hero-text": theme.heroText,
     "--font-body": theme.fontBody,
     "--font-heading": theme.fontHeading,
+    "--color-ligter-gr":theme.ligterbg,
   } as CSSProperties;
 }
