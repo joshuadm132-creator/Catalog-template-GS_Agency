@@ -1,14 +1,18 @@
-
 import Pricing from "@/components/pricing";
 import { business } from "@/config/business";
 
-export default function Home() {
+export default function PricingPage() {
   return (
     <main>
-
       <Pricing
-        tiers={business.Pricing.teir}
-        comparisonFeatures={business.Pricing.table}
+        title={business.Pricing.title}
+        subtitle={business.Pricing.subtitle}
+        tabs={business.Pricing.tabs}
+        tiers={business.Pricing.tiers}
+        comparisonFeatures={business.Pricing.comparison}
+        addons={business.Pricing.addons}
+        care={business.Pricing.care}
+        includedEverywhere={business.Pricing.includedEverywhere}
       />
     </main>
   );

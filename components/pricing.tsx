@@ -1,10 +1,27 @@
+"use client";
+
+import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import CustomSection from "@/components/section";
+import Link from "next/link";
 
 export type ServiceTier = {
   id: string;
   name: string;
+  bestFor?: string;
   price?: string;
+  period?: string;
+  monthlyNote?: string;
+  description: string;
+  popular?: boolean;
+  features: string[];
+  ctaText: string;
+};
+
+export type CarePlan = {
+  id: string;
+  name: string;
+  price: string;
   period?: string;
   description: string;
   popular?: boolean;
@@ -12,78 +29,176 @@ export type ServiceTier = {
   ctaText: string;
 };
 
+export type Addon = {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+};
+
 export type FeatureRow = {
-  category?: string;
   featureName: string;
   tierValues: Record<string, boolean | string>;
 };
 
+export type PricingTab = { id: string; label: string };
+
 type PricingProps = {
   title?: string;
   subtitle?: string;
+  tabs: PricingTab[];
   tiers: ServiceTier[];
   comparisonFeatures?: FeatureRow[];
+  addons: { title: string; subtitle?: string; items: Addon[] };
+  care: {
+    title: string;
+    subtitle?: string;
+    note?: string;
+    plans: CarePlan[];
+  };
+  includedEverywhere?: { title: string; items: string[] };
 };
 
 export default function Pricing({
   title,
   subtitle,
+  tabs,
   tiers,
   comparisonFeatures = [],
+  addons,
+  care,
+  includedEverywhere,
 }: PricingProps) {
+  const [activeTab, setActiveTab] = useState(tabs[0]?.id ?? "build");
+
   return (
     <CustomSection background="gray">
-      {/* Section Header */}
+      {/* Header */}
       <div className="text-center max-w-2xl mx-auto">
         <h2 className="text-3xl font-heading font-bold text-text md:text-4xl">
           {title}
         </h2>
-        <p className="mt-4 text-text-muted text-lg">{subtitle}</p>
+        {subtitle && <p className="mt-4 text-text-muted text-lg">{subtitle}</p>}
       </div>
 
-      {/* 1. Pricing Cards Grid */}
-      <div  className={`mt-12 grid gap-8 items-stretch mx-auto ${
-            tiers.length === 2
-              ? "grid-cols-1 md:grid-cols-2 max-w-3xl"
-              : tiers.length === 4
-              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
-              : "grid-cols-1 md:grid-cols-3 max-w-5xl"
-          }`}>
-        {tiers.map((tier) => (
-          <div
-            key={tier.id}
-            className={`relative flex flex-col p-8 rounded-2xl border ${
-              tier.popular
-                ? "border-primary bg-hero-bg text-hero-text shadow-lg scale-105 z-10"
-                : "border-border bg-background shadow-sm"
+      {/* Segmented tab control */}
+      <div className="mt-10 flex justify-center">
+        <div className="inline-flex rounded-full bg-background border border-border p-1">
+          {tabs.map((tab) => {
+            const isActive = tab.id === activeTab;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition ${
+                  isActive
+                    ? "bg-primary text-text-inverse"
+                    : "text-text-muted hover:text-text"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* BUILD TAB */}
+      {activeTab === "build" && (
+        <div className="mt-12">
+          <TierGrid tiers={tiers} />
+
+          {includedEverywhere && (
+            <IncludedEverywhere block={includedEverywhere} />
+          )}
+
+          {comparisonFeatures.length > 0 && (
+            <ComparisonTable tiers={tiers} rows={comparisonFeatures} />
+          )}
+
+          <AddonsBlock addons={addons} />
+        </div>
+      )}
+
+      {/* ADD-ONS TAB */}
+      {activeTab === "addons" && (
+        <div className="mt-12">
+          <AddonsBlock addons={addons} standalone />
+        </div>
+      )}
+
+      {/* CARE TAB */}
+      {activeTab === "care" && (
+        <div className="mt-12">
+          {care.note && (
+            <p className="text-center text-sm text-text-muted mb-8">
+              {care.note}
+            </p>
+          )}
+          <CareGrid plans={care.plans} />
+
+          {includedEverywhere && (
+            <IncludedEverywhere block={includedEverywhere} />
+          )}
+
+          <AddonsBlock addons={addons} />
+        </div>
+      )}
+    </CustomSection>
+  );
+}
+
+/* ---------- Build tier grid ---------- */
+
+function TierGrid({ tiers }: { tiers: ServiceTier[] }) {
+  return (
+    <div className="grid gap-8 items-stretch mx-auto grid-cols-1 md:grid-cols-3 max-w-5xl">
+      {tiers.map((tier) => (
+        <div
+          key={tier.id}
+          className={`relative flex flex-col p-8 rounded-2xl border ${
+            tier.popular
+              ? "border-primary bg-hero-bg text-hero-text shadow-lg md:scale-105 z-10"
+              : "border-border bg-background shadow-sm"
+          }`}
+        >
+          {tier.popular && (
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-text-inverse text-xs font-semibold rounded-full uppercase tracking-wider">
+              Most Popular
+            </span>
+          )}
+
+          <h3
+            className={`text-xl font-bold ${
+              tier.popular ? "text-hero-text" : "text-text"
             }`}
           >
-            {tier.popular && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-text-inverse text-xs font-semibold rounded-full uppercase tracking-wider">
-                Most Popular
-              </span>
-            )}
+            {tier.name}
+          </h3>
 
-            <h3
-              className={`text-xl font-bold ${
-                tier.popular ? "text-hero-text" : "text-text"
-              }`}
-            >
-              {tier.name}
-            </h3>
-
+          {tier.bestFor && (
             <p
-              className={`mt-2 text-sm ${
-                tier.popular ? "text-hero-text/70" : "text-text-muted"
+              className={`mt-1 text-xs uppercase tracking-wider ${
+                tier.popular ? "text-hero-text/60" : "text-text-muted"
               }`}
             >
-              {tier.description}
+              {tier.bestFor}
             </p>
+          )}
 
-            {/* Price */}
+          <p
+            className={`mt-4 text-sm ${
+              tier.popular ? "text-hero-text/70" : "text-text-muted"
+            }`}
+          >
+            {tier.description}
+          </p>
+
+          {tier.price && (
             <div className="mt-6 flex items-baseline">
               <span
-                className={`text-4xl font-extrabold ${
+                className={`text-lg font-bold uppercase ${
                   tier.popular ? "text-hero-text" : "text-text"
                 }`}
               >
@@ -91,7 +206,7 @@ export default function Pricing({
               </span>
               {tier.period && (
                 <span
-                  className={`ml-1 text-sm ${
+                  className={`ml-2 text-xs ${
                     tier.popular ? "text-hero-text/60" : "text-text-muted"
                   }`}
                 >
@@ -99,97 +214,259 @@ export default function Pricing({
                 </span>
               )}
             </div>
+          )}
 
-            {/* Bulleted Highlights */}
-            <ul
-              className={`mt-6 space-y-3 flex-1 text-sm ${
-                tier.popular ? "text-hero-text/80" : "text-text-muted"
+          {tier.monthlyNote && (
+            <p
+              className={`mt-2 text-xs ${
+                tier.popular ? "text-hero-text/60" : "text-text-muted"
               }`}
             >
-              {tier.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <span className="font-bold text-accent">✓</span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
+              {tier.monthlyNote}
+            </p>
+          )}
 
-            <button
-              className={`mt-8 w-full py-3 px-4 rounded-xl font-semibold transition ${
-                tier.popular
-                  ? "bg-primary text-text-inverse hover:bg-primary-hover"
-                  : "bg-surface text-text hover:bg-border"
+          <ul
+            className={`mt-6 space-y-3 flex-1 text-sm ${
+              tier.popular ? "text-hero-text/80" : "text-text-muted"
+            }`}
+          >
+            {tier.features.map((feature, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="font-bold text-accent mt-0.5">✓</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            href="/contact"
+            className={`mt-8 block text-center w-full py-3 px-4 rounded-xl font-semibold transition ${
+              tier.popular
+                ? "bg-primary text-text-inverse hover:bg-primary-hover"
+                : "bg-surface text-text hover:bg-border"
+            }`}
+          >
+            {tier.ctaText}
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ---------- Care grid ---------- */
+
+function CareGrid({ plans }: { plans: CarePlan[] }) {
+  return (
+    <div className="grid gap-8 items-stretch mx-auto grid-cols-1 md:grid-cols-3 max-w-5xl">
+      {plans.map((plan) => (
+        <div
+          key={plan.id}
+          className={`relative flex flex-col p-8 rounded-2xl border ${
+            plan.popular
+              ? "border-primary bg-hero-bg text-hero-text shadow-lg md:scale-105 z-10"
+              : "border-border bg-background shadow-sm"
+          }`}
+        >
+          {plan.popular && (
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-text-inverse text-xs font-semibold rounded-full uppercase tracking-wider">
+              Most Popular
+            </span>
+          )}
+
+          <h3
+            className={`text-xl font-bold ${
+              plan.popular ? "text-hero-text" : "text-text"
+            }`}
+          >
+            {plan.name}
+          </h3>
+
+          <p
+            className={`mt-2 text-sm ${
+              plan.popular ? "text-hero-text/70" : "text-text-muted"
+            }`}
+          >
+            {plan.description}
+          </p>
+
+          <div className="mt-6 flex items-baseline">
+            <span
+              className={`text-4xl font-extrabold ${
+                plan.popular ? "text-hero-text" : "text-text"
               }`}
             >
-              {tier.ctaText}
-            </button>
+              {plan.price}
+            </span>
+            {plan.period && (
+              <span
+                className={`ml-2 text-xs ${
+                  plan.popular ? "text-hero-text/60" : "text-text-muted"
+                }`}
+              >
+                {plan.period}
+              </span>
+            )}
           </div>
-        ))}
+
+          <ul
+            className={`mt-6 space-y-3 flex-1 text-sm ${
+              plan.popular ? "text-hero-text/80" : "text-text-muted"
+            }`}
+          >
+            {plan.features.map((feature, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="font-bold text-accent mt-0.5">✓</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            href="/contact"
+            className={`mt-8 block text-center w-full py-3 px-4 rounded-xl font-semibold transition ${
+              plan.popular
+                ? "bg-primary text-text-inverse hover:bg-primary-hover"
+                : "bg-surface text-text hover:bg-border"
+            }`}
+          >
+            {plan.ctaText}
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ---------- Included everywhere ---------- */
+
+function IncludedEverywhere({
+  block,
+}: {
+  block: { title: string; items: string[] };
+}) {
+  return (
+    <Reveal>
+      <div className="mt-16 max-w-4xl mx-auto rounded-2xl border border-border bg-background p-8">
+        <h3 className="text-xl font-heading font-bold text-text text-center">
+          {block.title}
+        </h3>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm text-text">
+              <span className="text-accent font-bold mt-0.5">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
+    </Reveal>
+  );
+}
 
-      {/* 2. Responsive Comparison Table */}
-      {comparisonFeatures.length > 0 && (
-        <Reveal>
-          <div className="mt-20">
-            <h3 className="text-2xl font-heading font-bold text-center text-text mb-8">
-              Compare Features
-            </h3>
+/* ---------- Comparison table ---------- */
 
-            {/* Horizontal scroll wrapper for mobile */}
-            <Reveal delay={500}>
-              <div className="overflow-x-auto bg-background border border-border rounded-2xl shadow-sm">
-                <table className="w-full text-left border-collapse min-w-[600px]">
-                  <thead>
-                    <tr className="border-b border-border bg-surface">
-                      <th className="p-4 font-semibold text-text w-2/5">
-                        Feature
-                      </th>
-                      {tiers.map((tier) => (
-                        <th
-                          key={tier.id}
-                          className="p-4 font-semibold text-text text-center"
-                        >
-                          {tier.name}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border text-sm text-text">
-                    {comparisonFeatures.map((row, index) => (
-                      <tr
-                        key={index}
-                        className="hover:bg-surface transition-colors"
-                      >
-                        <td className="p-4 font-medium text-text">
-                          {row.featureName}
-                        </td>
-                        {tiers.map((tier) => {
-                          const val = row.tierValues[tier.id];
-                          return (
-                            <td key={tier.id} className="p-4 text-center">
-                              {typeof val === "boolean" ? (
-                                val ? (
-                                  <span className="text-accent font-bold">
-                                    ✓
-                                  </span>
-                                ) : (
-                                  <span className="text-text-muted/50">—</span>
-                                )
-                              ) : (
-                                <span>{val ?? "—"}</span>
-                              )}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+function ComparisonTable({
+  tiers,
+  rows,
+}: {
+  tiers: ServiceTier[];
+  rows: FeatureRow[];
+}) {
+  return (
+    <Reveal>
+      <div className="mt-20">
+        <h3 className="text-2xl font-heading font-bold text-center text-text mb-8">
+          Compare Packages
+        </h3>
+        <div className="overflow-x-auto bg-background border border-border rounded-2xl shadow-sm">
+          <table className="w-full text-left border-collapse min-w-[600px]">
+            <thead>
+              <tr className="border-b border-border bg-surface">
+                <th className="p-4 font-semibold text-text w-2/5">Feature</th>
+                {tiers.map((tier) => (
+                  <th
+                    key={tier.id}
+                    className="p-4 font-semibold text-text text-center"
+                  >
+                    {tier.name}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border text-sm text-text">
+              {rows.map((row, index) => (
+                <tr key={index} className="hover:bg-surface transition-colors">
+                  <td className="p-4 font-medium text-text">{row.featureName}</td>
+                  {tiers.map((tier) => {
+                    const val = row.tierValues[tier.id];
+                    return (
+                      <td key={tier.id} className="p-4 text-center">
+                        {typeof val === "boolean" ? (
+                          val ? (
+                            <span className="text-accent font-bold">✓</span>
+                          ) : (
+                            <span className="text-text-muted/50">—</span>
+                          )
+                        ) : (
+                          <span>{val ?? "—"}</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+/* ---------- Add-ons block ---------- */
+
+function AddonsBlock({
+  addons,
+  standalone = false,
+}: {
+  addons: { title: string; subtitle?: string; items: Addon[] };
+  standalone?: boolean;
+}) {
+  return (
+    <Reveal>
+      <div className={standalone ? "" : "mt-20"}>
+        <div className="text-center max-w-2xl mx-auto">
+          <h3 className="text-2xl font-heading font-bold text-text">
+            {addons.title}
+          </h3>
+          {addons.subtitle && (
+            <p className="mt-3 text-text-muted">{addons.subtitle}</p>
+          )}
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+          {addons.items.map((addon) => (
+            <div
+              key={addon.id}
+              className="flex flex-col p-6 rounded-xl border border-border bg-background"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <h4 className="font-heading font-semibold text-text">
+                  {addon.name}
+                </h4>
+                <span className="text-sm font-bold text-accent shrink-0">
+                  {addon.price}
+                </span>
               </div>
-            </Reveal>
-          </div>
-        </Reveal>
-      )}
-    </CustomSection>
+              <p className="mt-2 text-sm text-text-muted leading-relaxed">
+                {addon.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Reveal>
   );
 }
