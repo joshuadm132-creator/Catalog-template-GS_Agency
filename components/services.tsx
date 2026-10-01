@@ -90,7 +90,7 @@ function PreviewGrid({ services }: { services: Service[] }) {
             key={service.id}
             delay={i * 80}
             service={toCardData(service, i)}
-            href={`/Services/#${service.id}`}
+            href={`/services/#${service.id}`}
           />
         ))}
       </div>
@@ -98,7 +98,7 @@ function PreviewGrid({ services }: { services: Service[] }) {
       <Reveal delay={services.length * 80 + 100}>
         <div className="mt-12">
           <Link
-            href="/Services"
+            href="/services"
             className="inline-block px-6 py-3 bg-primary text-text-inverse rounded-lg hover:bg-primary-hover transition font-medium"
           >
             Explore All Services
