@@ -471,14 +471,6 @@ export const Talos = {
         featureName: "Priority Technical Support",
         tierValues: { basic: false, Business: false, Advanced: true },
       },
-      {
-        featureName: "Build Fee (One-time)",
-        tierValues: { basic: "$40-60", Business: "$150-250", Advanced: "$350-600" },
-      },
-      {
-        featureName: "Hosting & SEO Fee",
-        tierValues: { basic: "$10-15/mo", Business: "$20-30/mo", Advanced: "$50-80/mo" },
-      },
     ],
   },
 
