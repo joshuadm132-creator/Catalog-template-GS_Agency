@@ -1,73 +1,72 @@
-
-import Hero from "@/components/hero";
-import About from "@/components/AboutContent"
-import Services from "@/components/services"
+// app/page.tsx
+import type { Metadata } from "next";
 import { business } from "@/config/business";
-import FeatureGrid from "@/components/FeatureGrid";
-import Process from "@/components/workProcess";
- import OurWork from "@/components/workPreview";
+import CatalogueHero from "@/components/catalogue-hero";
+import CategoryStrip from "@/components/category-strip";
+import FeaturedProducts from "@/components/featured-products";
+import CatalogueAbout from "@/components/catalogue-about";
+import Testimonials from "@/components/testimonials";
+import PartnersStrip from "@/components/partners-strip";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "TECHIAD Products | Paints, Coatings & Sealants in Zimbabwe",
+  description:
+    "G & S Chemicals Agencies manufactures and distributes TECHIAD paints, coatings, adhesives, and sealants across Zimbabwe. Browse our full range.",
+  alternates: { canonical: "/" },
+};
+
+export default function HomePage() {
   return (
-   <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
-    <Hero
-        variant="home"
-        title="Building the digital infrastructure for growing businesses."
-        description="..."
+    <main>
+      <CatalogueHero
+        eyebrow={business.hero.eyebrow}
+        headline={business.hero.headline}
+        description={business.hero.description}
+        primaryCta={business.hero.primaryCta}
+        secondaryCta={business.hero.secondaryCta}
+        image={business.hero.image}
       />
 
-      <FeatureGrid
-        eyebrow={business.whatWeDo.eyebrow}
-        title={business.whatWeDo.title}
-        subtitle={business.whatWeDo.subtitle}
-        items={business.whatWeDo.items}
-        variant={business.whatWeDo.variant}
-        columns={business.whatWeDo.columns}
-        background={business.whatWeDo.background}
-        cta={business.whatWeDo.cta}
+      <CategoryStrip
+        title={business.categoriesHeading.title}
+        subtitle={business.categoriesHeading.subtitle}
+        icons={{
+          "paints-coatings": "🎨",
+          "adhesives": "🔗",
+          "castings-general-sealants": "🧱",
+          "currants": "🪵",
+          "roofing-flooring-sealants": "🏠",
+          "solvents-automotive": "🚗",
+        }}
       />
 
-          <FeatureGrid
-        eyebrow={business.whyYouNeedWebsite.eyebrow}
-        title={business.whyYouNeedWebsite.title}
-        subtitle={business.whyYouNeedWebsite.subtitle}
-        items={business.whyYouNeedWebsite.items}
-        variant={business.whyYouNeedWebsite.variant}
-        columns={business.whyYouNeedWebsite.columns}
-        background={business.whyYouNeedWebsite.background}
-        cta={business.whyYouNeedWebsite.cta}
+      <FeaturedProducts
+        title={business.featuredHeading.title}
+        subtitle={business.featuredHeading.subtitle}
+        ctaText={business.featuredHeading.ctaText}
+        ctaHref={business.featuredHeading.ctaHref}
       />
 
-      <FeatureGrid
-        eyebrow={business.whatWeDontDo.eyebrow}
-        title={business.whatWeDontDo.title}
-        subtitle={business.whatWeDontDo.subtitle}
-        items={business.whatWeDontDo.items}
-        variant={business.whatWeDontDo.variant}
-        columns={business.whatWeDontDo.columns}
-        background={business.whatWeDontDo.background}
+      <CatalogueAbout
+        eyebrow={business.about.eyebrow}
+        title={business.about.title}
+        paragraphs={business.about.paragraphs}
+        cta={business.about.cta}
+        image={business.about.image}
+        awardCaption={business.about.awardCaption}
       />
-   
-    <OurWork />
-  <Process
-          title={business.process.title}
-          subtitle={business.process.subtitle}
-          steps={business.process.steps}
-          variant="flow"
-        />
-   <Services
-      headline={business.services.headline}
-      subheadline={business.services.subheadline}
-      services={business.services.contents}
-      variant="preview"
-    />
-     
 
+      <Testimonials
+        title={business.testimonials.title}
+        subtitle={business.testimonials.subtitle}
+        items={business.testimonials.items}
+      />
 
+      <PartnersStrip
+        title={business.partners.title}
+        subtitle={business.partners.subtitle}
+        logos={business.partners.logos}
+      />
     </main>
-
-
   );
-  
 }
-

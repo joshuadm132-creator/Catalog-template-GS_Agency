@@ -5,6 +5,8 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { themeToCssVars } from "@/config/ThemeToCSS";
 import { business } from "@/config/business";
+import { BasketProvider } from "@/components/basket-provider";
+import BasketButton from "@/components/basket-button";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,6 +25,39 @@ export const metadata: Metadata = {
   description: business.tagline?? "",
 };
 
+/* ============================================================
+   JSON-LD — structured data for Google and AI answer engines.
+   ============================================================ */
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: business.name,
+  description: business.description,
+  url: "https://gschem.co.zw",
+  telephone: business.contact.phone,
+  email: business.contact.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "14 Lisburn Road",
+    addressLocality: "Harare",
+    addressCountry: "ZW",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Zimbabwe",
+  },
+  serviceType: [
+    "Paints and Coatings",
+    "Adhesives",
+    "Sealants",
+    "Roofing Waterproofing",
+    "Automotive Solvents",
+    "Wood Preservatives",
+  ],
+  sameAs: business.contact.socials?.map((s) => s.href) ?? [],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -35,9 +70,16 @@ export default function RootLayout({
       style={themeToCssVars(business.theme)}
     >
       <body className="min-h-full flex flex-col">
-        <Nav />
-        {children}
-        <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <BasketProvider storageKey={`basket:${business.name}`}>
+          <Nav />
+          {children}
+          <Footer />
+          <BasketButton variant="floating" />
+        </BasketProvider >
       </body>
     </html>
   );

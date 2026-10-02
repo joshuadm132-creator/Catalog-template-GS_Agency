@@ -1,4 +1,4 @@
-import { bakeryTheme } from "../themes";
+import { chemicalsTheme } from "../themes";
 
 export const bakery = {
   name: "Sweet Crumb Bakery",
@@ -6,7 +6,7 @@ export const bakery = {
   tagline: "Crumble Bakery",
   description: "Fresh bread, pastries, and cakes baked daily in Harare.",
   location: "Avondale, Harare",
-  theme: bakeryTheme,
+  theme: chemicalsTheme,
 
   contact: {
     phone: "077 987 6543",

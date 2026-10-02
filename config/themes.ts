@@ -47,3 +47,23 @@ export const bakeryTheme: Theme = {
   fontBody: "var(--font-inter), system-ui, sans-serif",
   fontHeading: "var(--font-playfair), Georgia, serif",
 };
+
+export const chemicalsTheme: Theme = {
+  primary: "#c8102e",
+  primaryHover: "#a00d26",
+  accent: "#f59e0b",
+
+  background: "#ffffff",
+  surface: "#f7f7f8",
+  border: "#e5e7eb",
+
+  text: "#111827",
+  textMuted: "#6b7280",
+  textInverse: "#ffffff",
+
+  heroBg: "#0f172a",
+  heroText: "#ffffff",
+
+  fontBody: "var(--font-inter), system-ui, sans-serif",
+  fontHeading: "var(--font-inter), system-ui, sans-serif",
+};
