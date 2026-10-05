@@ -55,15 +55,6 @@ export default function Navbar() {
               {menuOpen ? "✕" : "☰"}
             </button>
           </div>
-          <button
-            type="button"
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={menuOpen}
-            className="md:hidden text-2xl p-2 text-text"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? "✕" : "☰"}
-          </button>
 
         </div>
 
