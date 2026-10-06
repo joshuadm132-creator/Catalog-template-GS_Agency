@@ -27,11 +27,11 @@ export const GSChemicals = {
      ============================================================ */
 
   contact: {
-    phone: "+263788237076",
+    phone: "+263 788 237 076",
     mobile: "+263788237076",
     email: "info@gschem.co.zw",
     address: "14 Lisburn Road, Workington, Harare",
-    whatsapp: "+263788237076",
+    whatsapp: "+447925173171",
 
     socials: [
       { label: "X", href: "https://x.com/gschem", icon: "x" },
@@ -262,8 +262,8 @@ export const GSChemicals = {
       {
         title: "Contact",
         links: [
-          { label: "+44 7925173171", href: "tel:+447925173171" },
-          { label: "+44 7925173171", href: "tel:+447925173171" },
+          { label: "+44 7925173171", href: "tel:+4479251731 71" },
+          { label: "+263 123456789", href: "tel:+263 123456789" },
           { label: "info@gschem.co.zw", href: "mailto:info@gschem.co.zw" },
           { label: "14 Lisburn Road, Workington, Harare", href: "/contact" },
         ],

@@ -1,7 +1,7 @@
 // app/basket/basket-client.tsx
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useBasket } from "@/components/basket-provider";
@@ -15,6 +15,8 @@ export default function BasketClient() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
+  const [sent, setSent] = useState(false);
+  const [sentUrl, setSentUrl] = useState<string | null>(null);
 
   /* ---------- Enrich items with product data ---------- */
 
@@ -45,34 +47,62 @@ export default function BasketClient() {
   /* ---------- WhatsApp message builder ---------- */
 
   const handleSend = () => {
-    if (!canSend) return;
+  if (!canSend) return;
 
-    const lines: string[] = [];
-    lines.push(`Quote Request from ${business.name}`);
+  /* ---------- Build the message ---------- */
+  const lines: string[] = [];
+  lines.push(`Quote Request from ${business.name}`);
+  lines.push("");
+  lines.push(`Name: ${name.trim()}`);
+  lines.push(`Phone: ${phone.trim()}`);
+  if (email.trim()) lines.push(`Email: ${email.trim()}`);
+  lines.push("");
+  lines.push("Items:");
+  enriched.forEach((row, i) => {
+    const variantPart = row.variant ? ` (${row.variant.label})` : "";
+    lines.push(
+      `${i + 1}. ${row.product.name}${variantPart} (Qty: ${row.item.quantity})`
+    );
+  });
+  if (notes.trim()) {
     lines.push("");
-    lines.push(`Name: ${name.trim()}`);
-    lines.push(`Phone: ${phone.trim()}`);
-    if (email.trim()) lines.push(`Email: ${email.trim()}`);
-    lines.push("");
-    lines.push("Items:");
-    enriched.forEach((row, i) => {
-      const variantPart = row.variant ? ` (${row.variant.label})` : "";
-      lines.push(
-        `${i + 1}. ${row.product.name}${variantPart} — Qty: ${row.item.quantity}`
-      );
-    });
-    if (notes.trim()) {
-      lines.push("");
-      lines.push(`Notes: ${notes.trim()}`);
-    }
+    lines.push(`Notes: ${notes.trim()}`);
+  }
 
-    const message = lines.join("\n");
-    const url = `https://wa.me/${business.contact.whatsapp}?text=${encodeURIComponent(
-      message
-    )}`;
+  const message = lines.join("\n");
+  const url = `https://wa.me/${business.contact.whatsapp}?text=${encodeURIComponent(
+    message
+  )}`;
 
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
+  /* ---------- Update state FIRST ----------
+     Setting state before navigating ensures the confirmation
+     renders regardless of what the browser does next. */
+
+  setSentUrl(url);
+  clear();
+  setSent(true);
+
+  /* ---------- Then navigate to WhatsApp ----------
+     Using a hidden anchor click is the most reliable way to
+     trigger a new tab AND survive the "app opens" case on mobile.
+     window.open is more likely to be blocked or race with React's
+     state update. */
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+  /* ---------- Confirmation state ---------- */
+
+  if (sent) {
+    return <QuoteSentConfirmation whatsappUrl={sentUrl ?? undefined} />;
+  }
 
   /* ---------- Not hydrated yet ---------- */
 
@@ -89,7 +119,9 @@ export default function BasketClient() {
   if (enriched.length === 0) {
     return (
       <div className="max-w-3xl mx-auto px-6 py-24 text-center">
-        <p className="text-5xl mb-6" aria-hidden="true">🧺</p>
+        <p className="text-5xl mb-6" aria-hidden="true">
+          🧺
+        </p>
         <h1 className="text-3xl font-heading font-bold text-text">
           Your basket is empty
         </h1>
@@ -147,7 +179,7 @@ export default function BasketClient() {
           ))}
         </div>
 
-        {/* ---------- Sidebar: contact details + send ---------- */}
+        {/* ---------- Sidebar ---------- */}
         <aside className="lg:sticky lg:top-24 rounded-2xl border border-border bg-surface p-6">
           <h2 className="text-lg font-heading font-bold text-text">
             Your details
@@ -234,7 +266,9 @@ function BasketLine({
   onRemove,
 }: {
   product: ReturnType<typeof getProductById> extends infer P
-    ? P extends undefined ? never : P
+    ? P extends undefined
+      ? never
+      : P
     : never;
   variant?: { id: string; label: string };
   variantId?: string;
@@ -312,27 +346,17 @@ function BasketLine({
 
         {/* Quantity */}
         <div className="mt-3 flex items-center gap-3">
-          <div className="flex items-center rounded-lg border border-border bg-background">
-            <button
-              type="button"
-              onClick={() => onUpdateQuantity(quantity - 1)}
-              aria-label="Decrease quantity"
-              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text transition"
-            >
-              −
-            </button>
-            <span className="w-10 text-center text-sm font-medium text-text">
-              {quantity}
-            </span>
-            <button
-              type="button"
-              onClick={() => onUpdateQuantity(quantity + 1)}
-              aria-label="Increase quantity"
-              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text transition"
-            >
-              +
-            </button>
-          </div>
+          <label
+            htmlFor={`qty-${product.id}-${variantId ?? "default"}`}
+            className="sr-only"
+          >
+            Quantity for {product.name}
+          </label>
+          <QuantityInput
+            id={`qty-${product.id}-${variantId ?? "default"}`}
+            value={quantity}
+            onChange={onUpdateQuantity}
+          />
         </div>
       </div>
     </div>
@@ -351,7 +375,6 @@ function VariantPickerButton({
   const { add, remove } = useBasket();
 
   const handleClick = () => {
-    // Remove the variant-less line, add a line with the chosen variant
     remove(productId, undefined);
     add(productId, variantId, 1);
   };
@@ -406,6 +429,172 @@ function Field({
           outline-none transition
         "
       />
+    </div>
+  );
+}
+
+/* ---------- Quantity input ---------- */
+
+function QuantityInput({
+  id,
+  value,
+  onChange,
+  min = 1,
+  max = 9999,
+}: {
+  id: string;
+  value: number;
+  onChange: (n: number) => void;
+  min?: number;
+  max?: number;
+}) {
+  const [localValue, setLocalValue] = useState(String(value));
+
+  useEffect(() => {
+    setLocalValue(String(value));
+  }, [value]);
+
+  const commit = (raw: string) => {
+    const parsed = parseInt(raw, 10);
+    if (raw === "" || Number.isNaN(parsed)) {
+      setLocalValue(String(value));
+      return;
+    }
+    const clamped = Math.max(min, Math.min(max, parsed));
+    setLocalValue(String(clamped));
+    if (clamped !== value) onChange(clamped);
+  };
+
+  const handleDecrement = () => {
+    onChange(Math.max(min, value - 1));
+  };
+
+  const handleIncrement = () => {
+    onChange(Math.min(max, value + 1));
+  };
+
+  return (
+    <div className="inline-flex items-center rounded-lg border border-border bg-background overflow-hidden">
+      <button
+        type="button"
+        onClick={handleDecrement}
+        disabled={value <= min}
+        aria-label="Decrease quantity"
+        className="
+          w-10 h-10 flex items-center justify-center
+          text-text-muted hover:text-text hover:bg-surface
+          disabled:opacity-30 disabled:cursor-not-allowed
+          transition
+        "
+      >
+        −
+      </button>
+
+      <input
+        id={id}
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        value={localValue}
+        onChange={(e) => {
+          const digits = e.target.value.replace(/[^0-9]/g, "");
+          setLocalValue(digits);
+        }}
+        onBlur={(e) => commit(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            commit((e.target as HTMLInputElement).value);
+            (e.target as HTMLInputElement).blur();
+          }
+        }}
+        className="
+          w-16 h-10 px-2 text-center
+          text-text font-medium
+          bg-transparent
+          border-x border-border
+          focus:outline-none focus:bg-surface
+          transition-colors
+        "
+        aria-label="Quantity"
+      />
+
+      <button
+        type="button"
+        onClick={handleIncrement}
+        disabled={value >= max}
+        aria-label="Increase quantity"
+        className="
+          w-10 h-10 flex items-center justify-center
+          text-text-muted hover:text-text hover:bg-surface
+          disabled:opacity-30 disabled:cursor-not-allowed
+          transition
+        "
+      >
+        +
+      </button>
+    </div>
+  );
+}
+
+/* ---------- Confirmation shown after a successful send ---------- */
+
+function QuoteSentConfirmation({
+  whatsappUrl,
+}: {
+  whatsappUrl?: string;
+}) {
+  return (
+    <div className="max-w-2xl mx-auto px-6 py-24 text-center">
+      <div className="mx-auto w-16 h-16 rounded-full bg-accent/15 text-accent flex items-center justify-center text-3xl">
+        ✓
+      </div>
+
+      <h1 className="mt-8 text-3xl md:text-4xl font-heading font-bold text-text">
+        Quote request sent
+      </h1>
+
+      <p className="mt-4 text-text-muted leading-relaxed">
+        WhatsApp has opened in a new tab with your quote request already
+        filled in. Switch to that tab and tap <strong>Send</strong> to deliver
+        it to our team.
+      </p>
+
+      <p className="mt-3 text-text-muted leading-relaxed">
+        We'll get back to you during business hours with pricing and
+        availability.
+      </p>
+
+      {whatsappUrl && (
+        <p className="mt-6">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-primary hover:underline"
+          >
+            WhatsApp didn't open? Click here to try again →
+          </a>
+        </p>
+      )}
+
+      <div className="mt-10 flex flex-wrap gap-3 justify-center">
+        <Link
+          href="/products"
+          className="px-6 py-3 rounded-lg bg-primary text-text-inverse hover:bg-primary-hover transition font-semibold"
+        >
+          Back to Products
+        </Link>
+        <Link
+          href="/"
+          className="px-6 py-3 rounded-lg border border-border text-text hover:bg-surface transition font-semibold"
+        >
+          Return Home
+        </Link>
+      </div>
+
+      <p className="mt-12 text-xs text-text-muted uppercase tracking-wider">
+        Need help? Call us on {business.contact.phone}
+      </p>
     </div>
   );
 }
