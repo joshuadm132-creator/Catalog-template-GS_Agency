@@ -33,11 +33,11 @@ export default function CatalogueHero({
       />
 
       <div className="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+        <div className=" text-center md:items-center">
           {/* Left: copy */}
           <div>
             {eyebrow && (
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">
                 {eyebrow}
               </p>
             )}
@@ -46,11 +46,11 @@ export default function CatalogueHero({
               {headline}
             </h1>
 
-            <p className="mt-6 text-lg text-hero-text/75 leading-relaxed max-w-lg">
+            <p className="mt-6 ml-20 text-lg text-hero-text/75 leading-relaxed">
               {description}
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap justify-center gap-6">
               <Link
                 href={primaryCta.href}
                 className="px-6 py-3 rounded-lg bg-primary text-text-inverse hover:bg-primary-hover transition font-semibold"
@@ -69,7 +69,7 @@ export default function CatalogueHero({
           </div>
 
           {/* Right: image */}
-          <div className="relative">
+          {/* <div className="relative">
             {image ? (
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-hero-text/5 border border-hero-text/10">
                 <Image
@@ -87,8 +87,8 @@ export default function CatalogueHero({
                   Product imagery coming soon
                 </p>
               </div>
-            )}
-          </div>
+            )} 
+          </div>*/}
         </div>
       </div>
     </section>

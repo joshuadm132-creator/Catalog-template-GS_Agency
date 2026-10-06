@@ -13,10 +13,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-hero-bg text-hero-text">
+    <footer className="bg-gradient-to-b from-hero-bg to-red-900  text-hero-text">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <Reveal delay={400}>
-          <div className="flex flex-col md:flex-row justify-between gap-8">
+          <div className="flex flex-col md:flex-row justify-between gap-5">
 
             {/* Brand column */}
             <div>
@@ -92,22 +92,6 @@ export default function Footer() {
                 </span>
               </button>
 
-              <h2 className="hidden md:block text-xl font-heading font-bold">
-                Contact
-              </h2>
-
-              <div
-                id="footer-section-Contact"
-                className={`
-                  flex-col gap-2 mt-3 text-hero-text/70
-                  ${openSection === "Contact" ? "flex" : "hidden"}
-                  md:flex
-                `}
-              >
-                <p>{business.contact.phone}</p>
-                <p>{business.contact.email}</p>
-                <p>{business.location}</p>
-              </div>
             </div>
 
           </div>
