@@ -141,7 +141,7 @@ export default function BasketClient() {
   /* ---------- Main basket ---------- */
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-16">
+    <div className="w-full max-w-5xl min-w-0 mx-auto px-4 sm:px-6 py-12 sm:py-16">
       <header className="flex items-baseline justify-between gap-4 flex-wrap">
         <h1 className="text-3xl md:text-4xl font-heading font-bold text-text uppercase">
           Your Basket
@@ -156,14 +156,13 @@ export default function BasketClient() {
       </header>
 
       {hasItemsMissingVariant && (
-        <div className="mt-6 p-4 rounded-lg border border-accent/40 bg-accent/10 text-sm text-text">
-          Some items need a size selected before you can send your request.
+        <div className="w-full min-w-0 flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl border border-border bg-background">          Some items need a size selected before you can send your request.
         </div>
       )}
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px] items-start">
+      <div className="mt-8 sm:mt-10 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 items-start">
         {/* ---------- Items list ---------- */}
-        <div className="space-y-4">
+        <div className="min-w-0 w-full space-y-4">
           {enriched.map((row) => (
             <BasketLine
               key={`${row.item.productId}::${row.item.variantId ?? "default"}`}

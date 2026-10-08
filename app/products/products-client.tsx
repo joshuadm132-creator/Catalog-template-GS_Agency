@@ -37,7 +37,7 @@ export default function ProductsClient() {
     if (localQuery === query) return;
     const timer = setTimeout(() => {
       updateParams({ q: localQuery || null, page: null });
-    }, 450);
+    }, 510);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localQuery]);
