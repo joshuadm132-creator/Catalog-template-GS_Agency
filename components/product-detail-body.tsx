@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/config/products";
 import AddToBasketButton from "@/components/add-to-basket-button";
+import ProductGallery from "@/components/product-gallery";
 
 type ProductDetailBodyProps = {
   product: Product;
@@ -16,7 +17,7 @@ export default function ProductDetailBody({ product }: ProductDetailBodyProps) {
 
   // Default to the first variant if any exist
   const [selectedVariant, setSelectedVariant] = useState(
-    hasVariants ? product.variants![0].id : null
+    hasVariants ? product.variants![0].id : null,
   );
 
   // Fall back to the first image if no images array — defensive
@@ -99,6 +100,14 @@ export default function ProductDetailBody({ product }: ProductDetailBodyProps) {
           <ContentBlock title="Application" body={product.application} />
           <ContentBlock title="Precaution" body={product.precaution} />
         </div>
+        {/* Gallery — optional, only renders if product has gallery images */}
+        {product.gallery && product.gallery.length > 0 && (
+          <ProductGallery
+            title="In Use"
+            subtitle={`See how ${product.name} is used in real applications.`}
+            images={product.gallery}
+          />
+        )}
       </div>
 
       {/* ---------------- RIGHT: Sticky Sidebar ---------------- */}
@@ -124,9 +133,7 @@ export default function ProductDetailBody({ product }: ProductDetailBodyProps) {
             <div className="mt-5 p-3 rounded-lg bg-surface border border-border">
               <p className="text-xs text-text-muted">Selected size</p>
               <p className="mt-1 text-sm font-medium text-text">
-                {
-                  product.variants!.find((v) => v.id === selectedVariant)?.label
-                }
+                {product.variants!.find((v) => v.id === selectedVariant)?.label}
               </p>
             </div>
           )}
@@ -136,7 +143,7 @@ export default function ProductDetailBody({ product }: ProductDetailBodyProps) {
             selectedVariantId={selectedVariant ?? undefined}
             context="detail"
             className="mt-6 w-full"
-            />
+          />
 
           {/* Primary CTA */}
           <Link
@@ -190,10 +197,7 @@ function ContentBlock({ title, body }: { title: string; body: string }) {
 
 /* ---------- WhatsApp helper ---------- */
 
-function buildWhatsAppLink(
-  product: Product,
-  variantId: string | null
-): string {
+function buildWhatsAppLink(product: Product, variantId: string | null): string {
   const phone = "263771234567"; // swap for real number
   const variantLabel = variantId
     ? product.variants?.find((v) => v.id === variantId)?.label
