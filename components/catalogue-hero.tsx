@@ -46,7 +46,7 @@ export default function CatalogueHero({
               {headline}
             </h1>
 
-            <p className="mt-6 ml-20 text-lg text-hero-text/75 leading-relaxed">
+            <p className="mt-6 md:ml-20 text-lg text-hero-text/80 leading-relaxed">
               {description}
             </p>
 
