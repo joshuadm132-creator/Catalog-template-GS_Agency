@@ -21,7 +21,11 @@ export default function ProductDetailBody({ product }: ProductDetailBodyProps) {
   );
 
   // Fall back to the first image if no images array — defensive
-  const heroImage = product.images[0];
+  let heroImage = product.images[0];
+  if(product.images.length>1 ){
+    heroImage = product.images[1];
+  }
+  
 
   return (
     <div className="grid gap-10 md:grid-cols-[1fr_380px] md:items-start">

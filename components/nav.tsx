@@ -14,20 +14,17 @@ export default function Navbar() {
     <nav className="border-b border-border bg-background">
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="py-5 flex items-center justify-between">
+        <div className="py-2 flex items-center justify-between">
 
          <Link href="/" className="flex items-center gap-3">
             <Image
-              src="Logo-removebg-preview.png" 
+              src={business.logoImage} 
               alt={`${business.name} Logo`}
               width={40}
               height={40}
               className="h-10 w-auto object-contain"
               priority
             />
-            <span className="text-2xl md:text-3xl font-heading font-bold text-text">
-              {business.name}
-            </span>
           </Link>
 
           <div className="hidden md:flex gap-6">

@@ -16,7 +16,7 @@ export default function ProductGallery({
   subtitle,
   images,
 }: ProductGalleryProps) {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
   const total = images.length;
 
   /* ---------- Arrow handlers ---------- */

@@ -15,28 +15,53 @@ export const GSChemicals = {
 
   name: "G & S Chemicals Agencies",
   logo: "G & S",
-  logoImage: "/gs-logo.png",
+  logoImage: "images/gs/G&S logo.png",
   tagline: "Innovating for a stronger future",
   description:
-    "Manufacturers and distributors of TECHIAD paints, coatings, adhesives, and sealants across Zimbabwe.",
+    "Registered manufacturer and distributor of TECHIAD-branded paints, coatings, adhesives, sealants, waterproofing solutions, and construction materials across Zimbabwe — with over two and a half decades of experience.",
   theme: chemicalsTheme,
-  location: "14 Lisburn Road, Workington, Harare",
+  location: "14B Lisburn Road, Workington, Harare",
 
   /* ============================================================
      CONTACT
      ============================================================ */
 
   contact: {
-    phone: "+263 788 237 076",
-    mobile: "+263788237076",
+    phone: "+263 (242) 691775 / 691658",
+    mobile: "+263 713 788 934",
+    // Secondary mobile from the profile — kept separate so the UI can show both
+    mobileAlt: "+263 772 349 180",
+    whatsapp: "+263 71 378 8934",
+    // TODO: confirm whether these emails should all surface on the site
     email: "info@gschem.co.zw",
-    address: "14 Lisburn Road, Workington, Harare",
-    whatsapp: "+447925173171",
+    emails: [
+      "info@gschem.co.zw",
+      "sales@gschem.co.zw",
+      "admin@gschem.co.zw",
+    ],
+    address: "No. 14B Lisburn Road, Workington, Harare, Zimbabwe",
+    website: "www.gschem.co.zw",
+
+    // Branch offices (from profile p.21)
+    branches: [
+      {
+        name: "Bulawayo",
+        address: "39 Plumtree Road, Belmont",
+        phone: "+263 (292) 461498 / +263 773 227 395",
+        email: "gsmaterialbyo@gmail.com",
+      },
+      {
+        name: "Mutare",
+        address: "4 Hull Close, Nyakamiti",
+        phone: "+263 772 310 987",
+      },
+    ],
 
     socials: [
-      { label: "X", href: "https://x.com/gschem", icon: "x" },
-      { label: "Instagram", href: "https://instagram.com/gschem", icon: "instagram" },
-      { label: "Facebook", href: "https://facebook.com/gschem", icon: "facebook" },
+      // TODO: replace with the real handles — I couldn't verify these from the profile
+      { label: "X", href: "Temp: https://x.com/gschem", icon: "x" },
+      { label: "Instagram", href: "Temp: https://instagram.com/gschem", icon: "instagram" },
+      { label: "Facebook", href: "Temp: https://facebook.com/gschem", icon: "facebook" },
     ] as SocialConfig[],
 
     form: {
@@ -70,25 +95,22 @@ export const GSChemicals = {
      HOME PAGE SECTIONS
      ============================================================ */
 
-  /* Hero for catalogue businesses */
   hero: {
     eyebrow: "TECHIAD Products",
-    headline: "Built for every job, from foundation to finish.",
+    headline: "Quality chemical solutions for a stronger, longer lasting future.",
     description:
-      "We manufacture and distribute paints, coatings, adhesives, sealants, and automotive products across Zimbabwe.",
+      "We manufacture and distribute TECHIAD-branded paints, coatings, adhesives, sealants, waterproofing solutions, and construction materials — serving industrial, construction, and mining sectors across Zimbabwe.",
     primaryCta: { text: "Browse Products", href: "/products" },
     secondaryCta: { text: "Request a Quote", href: "/contact" },
     image: "/images/gs/hero-products.png",
   },
 
-  /* Category strip on home — pulls from config/products.ts categories */
   categoriesHeading: {
     title: "Shop by Category",
     subtitle:
-      "Six product ranges covering construction, automotive, and industrial applications.",
+      "Seven product ranges covering paints, adhesives, sealants, waterproofing, automotive, and construction essentials.",
   },
 
-  /* Featured products section */
   featuredHeading: {
     title: "Featured Products",
     subtitle: "Discover our most requested products.",
@@ -96,23 +118,23 @@ export const GSChemicals = {
     ctaHref: "/products",
   },
 
-  /* About teaser block */
   about: {
     eyebrow: "About G & S Chemicals",
     title: "A Zimbabwean manufacturer you can rely on",
     paragraphs: [
-      "G & S Chemicals manufactures, distributes, and installs TECHIAD branded products. Our range includes adhesives, castings, coatings, currants, preservative paints, waterproofing services, and bacteria controlled environment floors.",
-      "Through continual expansion of our product research and development, we've become a leading supplier of chemical formulated products across Zimbabwe. We remain committed to quality objectives by providing services and products that consistently satisfy and exceed our customers' diverse requirements.",
+      "G & S Chemicals, a company with over two and a half decades of experience, is a registered manufacturer and distributor of TECHIAD-branded chemical products. The company is committed to quality, integrity, and customer satisfaction, which is evident in all aspects of its operations.",
+      "We manufacture, distribute, and install TECHIAD branded products. Our range includes adhesives, castings, sealants, coatings, currants, preservative paints, waterproofing services on roof decks and water reservoirs, and bacteria controlled environment floors.",
+      "G & S Chemicals has established a broad trade network across industry and commerce, successfully positioning its TECHIAD products in various market segments. Through continual expansion of our product research and development unit, we've become a leading supplier of chemical formulated products across Zimbabwe.",
     ],
     cta: { text: "Read More", href: "/about" },
     image: "/images/gs/award.png",
     awardCaption: "National Quality Gold Winner",
   },
 
-  /* Testimonials */
   testimonials: {
     title: "What Our Customers Say",
     subtitle: "Trusted by businesses across Zimbabwe.",
+    // TODO: confirm with client — these read like they were generated for the old site
     items: [
       {
         id: "tadzwa",
@@ -138,20 +160,21 @@ export const GSChemicals = {
     ],
   },
 
-  /* Trading partners strip */
   partners: {
     title: "Trading Partners",
     subtitle: "Moving the industries forward together.",
+    // Pulled from profile p.13 + footer. Temp: logo paths need swapping for real assets
     logos: [
-      { name: "Metro Paints",   src: "/images/partners/metro.png" },
-      { name: "Halsted Builders Express", src: "/images/partners/halsted.png" },
-      { name: "Farm & City Centre", src: "/images/partners/farm-city.png" },
-      { name: "Electrosales",   src: "/images/partners/electrosales.png" },
-      { name: "P & P Hardware", src: "/images/partners/pnp.png" },
-      { name: "Union Hardware", src: "/images/partners/union.png" },
-      { name: "N. Richards",    src: "/images/partners/nrichards.png" },
-      { name: "Bhora Mega Mart", src: "/images/partners/bhora.png" },
-      { name: "Builders Warehouse", src: "/images/partners/builders.png" },
+      { name: "Halsted",       src: "Temp: /images/partners/halsted.png" },
+      { name: "Electrodes",    src: "Temp: /images/partners/electrodes.png" },
+      { name: "Metro Peach",   src: "Temp: /images/partners/metro.png" },
+      { name: "Bhola",         src: "Temp: /images/partners/bhola.png" },
+      { name: "N Richard's",   src: "Temp: /images/partners/nrichards.png" },
+      { name: "Farm and City", src: "Temp: /images/partners/farm-city.png" },
+      { name: "Union Hardware",src: "Temp: /images/partners/union.png" },
+      { name: "PG",            src: "Temp: /images/partners/pg.png" },
+      { name: "Build Easy",    src: "Temp: /images/partners/build-easy.png" },
+      { name: "Mohammed Mussa",src: "Temp: /images/partners/mohammed-mussa.png" },
     ],
   },
 
@@ -159,7 +182,7 @@ export const GSChemicals = {
      ABOUT PAGE
      ============================================================ */
 
-    About: {
+  About: {
     intro: {
       eyebrow: "About Us",
       headline: "Over 25 years manufacturing chemical products for Zimbabwe.",
@@ -174,31 +197,159 @@ export const GSChemicals = {
         id: "who-we-are",
         subtitle: "About G & S Chemicals",
         paragraphs: [
-          "We manufacture, distribute, and install TECHIAD branded products. Our range includes adhesives, castings, sealants, coatings, currants, preservative paints, waterproofing services on roof decks, water reservoirs, and bacteria controlled environment floors.",
+          "We manufacture, distribute, and install TECHIAD branded products. Our range includes adhesives, castings, sealants, coatings, currants, preservative paints, waterproofing services on roof decks and water reservoirs, and bacteria controlled environment floors.",
           "G & S Chemicals has become a leading supplier of chemical formulated products through continual expansion of our product research and development unit. We continually improve our company quality objectives by committing to provide services and products that consistently satisfy and exceed our customers' diverse requirements.",
         ],
         image: "/images/gs/award.png",
       },
     ],
 
-    /* Pull quote shown inline in the story section */
     pullQuote: "TECHIAD Products, adding value to your property.",
 
-    /* Four headline numbers */
     stats: [
       { number: "25+",   label: "Years of Excellence" },
       { number: "1000+", label: "Satisfied Customers" },
-      { number: "4",     label: "Distribution Centres" },
+      { number: "3",     label: "Distribution Centres" }, // Harare, Bulawayo, Mutare
       { number: "100%",  label: "Quality Guaranteed" },
     ],
 
-    /* Vision and mission shown side by side */
     vision:
-      "To be innovators of preferred chemically formulated products that nurture domestic and industrial value creation.",
+      "To be innovators of preferred chemically formulated products that nurture the desires of domestic and industrial value creation consumers.",
     mission:
-      "To objectively compete in providing esteemed quality branded products and solution-loaded services that maximize stakeholder value.",
+      "To objectively compete in the provision of esteemed quality branded products and solutions loaded services that maximize the stakeholders' values.",
 
-    /* Awards list, newest first */
+    // From profile p.2 / p.3
+    strategicIntent:
+      "Sustained and consistent growth through customer wholesome services.",
+    culture: "Continuous improvements breed wisdom.",
+    values: [
+      "Collaboration",
+      "Competency",
+      "Consistency",
+      "Courtesy",
+      "Creativity",
+      "Communication",
+      "Customer centricity",
+    ],
+
+    // From profile p.3 — company history timeline
+    history: [
+      {
+        era: "1990s",
+        description:
+          "Founded as a small-scale manufacturer supplying adhesives and industrial chemicals. Incorporated on 15 July 1999 (Certificate of Incorporation No. 6525/99).",
+      },
+      {
+        era: "2000s",
+        description:
+          "Expanded product range to include sealants, coatings, and waterproofing solutions.",
+      },
+      {
+        era: "2010s",
+        description:
+          "Strengthened research and development, launching advanced formulations for construction and industry, and established a nationwide distribution network, positioning TECHIAD as a market leader.",
+      },
+      {
+        era: "2020s",
+        description:
+          "Continues to serve a wide range of industries and strives to push the boundaries of innovation in chemical formulated products.",
+      },
+    ],
+
+    // From profile p.3
+    coreCompetencies: [
+      {
+        title: "Superior Quality",
+        description:
+          "All TECHIAD products are rigorously tested for durability, performance, and compliance with industrial standards.",
+      },
+      {
+        title: "Research & Development",
+        description:
+          "Continuous improvement and innovation of formulations to meet evolving client needs.",
+      },
+      {
+        title: "Wide Product Range",
+        description:
+          "A one-stop shop for industrial and commercial chemical needs, including adhesives, coatings, sealants, and waterproofing solutions.",
+      },
+      {
+        title: "Customer-Centric Approach",
+        description:
+          "A dedicated team focused on understanding client challenges and providing tailored solutions.",
+      },
+      {
+        title: "Sustainable Practices",
+        description:
+          "Prioritization of eco-friendly production processes and solutions.",
+      },
+    ],
+
+    // From profile p.11
+    industriesServed: [
+      "Construction & Infrastructure",
+      "Manufacturing & Industrial",
+      "Home Improvement & Retail",
+      "Automotive & Transport",
+      "Mining & Heavy-Duty Applications",
+    ],
+
+    // From profile p.11
+    keyProjects: {
+      paint: [
+        "Dewerwi School",
+        "Chishawasha School",
+        "Emerald Hill Deaf and Dumb",
+        "Peter House",
+        "Watershed Primary",
+        "Bindura Hospital",
+        "St Peter's Anglican Church, Warren Park",
+        "M&J HQ Hatfield",
+      ],
+      epoxyFloors: ["Still Waters", "Varun"],
+      waterproofing: ["Dublin House"],
+    },
+
+    // From profile pp.14–20
+    certifications: [
+      {
+        year: "1999",
+        title: "Certificate of Incorporation",
+        category: "Companies Act [Chapter 24:03] — No. 6525/99",
+      },
+      {
+        year: "2024",
+        title: "Health Registration Certificate",
+        category: "Business No. BUS0039238 — Factory, non-food",
+      },
+      {
+        year: "2025",
+        title: "ZIMRA Tax Clearance",
+        category: "TIN 2000155167 — Valid to 31 December 2025",
+      },
+      {
+        year: "2025",
+        title: "PRAZ — Paints and Accessories (GP002)",
+        category: "PRAZ-2025-504-SKS-7217 — Expires 31 Dec 2025",
+      },
+      {
+        year: "2025",
+        title: "PRAZ — Tools and Hardware (GT002)",
+        category: "PRAZ-2025-217-JMT-7217 — Expires 31 Dec 2025",
+      },
+      {
+        year: "2025",
+        title: "PRAZ — Construction Materials (GC007)",
+        category: "PRAZ-2025-581-ZKL-7217 — Expires 31 Dec 2025",
+      },
+      {
+        year: "2025",
+        title: "PRAZ — Building and Roof Repairs (SB004)",
+        category: "PRAZ-2025-912-SUN-7217 — Expires 31 Dec 2025",
+      },
+    ],
+
+    // TODO: verify against the client. Awards in old config didn't appear in the PDF.
     awards: [
       {
         year: "2025",
@@ -241,13 +392,15 @@ export const GSChemicals = {
     sections: [
       {
         title: "Products",
+        // Updated to match the seven real categories below
         links: [
-          { label: "Paints & Coatings",           href: "/products?category=paints-coatings" },
-          { label: "Adhesives",                    href: "/products?category=adhesives" },
-          { label: "Castings & General Sealants",  href: "/products?category=castings-general-sealants" },
-          { label: "Currants",                     href: "/products?category=currants" },
-          { label: "Roofing & Flooring Sealants",  href: "/products?category=roofing-flooring-sealants" },
-          { label: "Solvents & Automotive",        href: "/products?category=solvents-automotive" },
+          { label: "Paints & Coatings",             href: "/products?category=paints-coatings" },
+          { label: "Adhesives",                      href: "/products?category=adhesives" },
+          { label: "Castings & Sealants",            href: "/products?category=castings-sealants" },
+          { label: "Roofing & Flooring",             href: "/products?category=roofing-flooring" },
+          { label: "Automotive & Solvents",          href: "/products?category=automotive-solvents" },
+          { label: "Timber Protection",              href: "/products?category=timber-protection" },
+          { label: "Construction Materials",         href: "/products?category=construction-materials" },
         ],
       },
       {
@@ -262,10 +415,12 @@ export const GSChemicals = {
       {
         title: "Contact",
         links: [
-          { label: "+44 7925173171", href: "tel:+4479251731 71" },
-          { label: "+263 123456789", href: "tel:+263 123456789" },
-          { label: "info@gschem.co.zw", href: "mailto:info@gschem.co.zw" },
-          { label: "14 Lisburn Road, Workington, Harare", href: "/contact" },
+          { label: "+263 (242) 691775 / 691658", href: "tel:+263242691775" },
+          { label: "+263 713 788 934",             href: "tel:+263713788934" },
+          { label: "+263 772 349 180",             href: "tel:+263772349180" },
+          { label: "info@gschem.co.zw",             href: "mailto:info@gschem.co.zw" },
+          { label: "sales@gschem.co.zw",            href: "mailto:sales@gschem.co.zw" },
+          { label: "No. 14B Lisburn Road, Workington, Harare", href: "/contact" },
         ],
       },
     ],

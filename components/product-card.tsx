@@ -34,7 +34,7 @@ export default function ProductCard({
         }`}
       >
         <Image
-          src={product.images[0]}
+          src={product.images[1] ||product.images[0]}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
